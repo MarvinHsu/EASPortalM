@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:p="http://primefaces.org/ui">
+<p:panel>
+	<h:panelGrid columns="2" columnClasses="column35Class, column65Class">
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_FunctionItem_id}" />
+		<p:inputText value="#{functionItemManagedBean.updatingData.entity.id}"
+			label="#{resources.com_hsuforum_easportalm_entity_FunctionItem_id}"
+			readOnly="true" />
+
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_FunctionItem_name}" />
+		<p:inputText id="inputTextName"
+			value="#{functionItemManagedBean.updatingData.entity.name}"
+			label="#{resources.com_hsuforum_easportalm_entity_FunctionItem_name}"
+			required="true" />
+
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_FunctionItem_code}" />
+		<p:inputText id="inputTextCode"
+			value="#{functionItemManagedBean.updatingData.entity.code}"
+			label="#{resources.com_hsuforum_easportalm_entity_FunctionItem_code}"
+			required="true" />
+
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_FunctionItem_url}" />
+		<p:inputText id="inputTextUrl"
+			value="#{functionItemManagedBean.updatingData.entity.url}"
+			label="#{resources.com_hsuforum_easportalm_entity_FunctionItem_url}"
+			required="true" />
+
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_FunctionItem_function}" />
+		<p:selectOneMenu id="selectFunctionId" required="true"
+			value="#{functionItemManagedBean.updatingData.selectFunctionId}"
+			label="#{resources.com_hsuforum_easportalm_entity_FunctionItem_function}">
+			<f:selectItems value="#{functionItemManagedBean.functionList}" />
+		</p:selectOneMenu>
+
+
+	</h:panelGrid>
+</p:panel>
+
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<p:panel>
+	<h:panelGrid columns="2" columnClasses="column35Class, column65Class">
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_Group_id}" />
+		<p:inputText value="#{groupManagedBean.updatingData.entity.id}"
+			label="#{resources.com_hsuforum_easportalm_entity_Group_id}"
+			readOnly="true" />
+
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_Group_name}" />
+		<p:inputText id="inputTextName"
+			value="#{groupManagedBean.updatingData.entity.name}"
+			label="#{resources.com_hsuforum_easportalm_entity_Group_name}"
+			required="true" />
+
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_Group_code}" />
+		<p:inputText id="inputTextCode"
+			value="#{groupManagedBean.updatingData.entity.code}"
+			label="#{resources.com_hsuforum_easportalm_entity_Group_code}"
+			required="true" />
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_Group_system}" />
+		<p:selectOneMenu id="selectSystemId"
+			value="#{groupManagedBean.updatingData.selectSystemId}"
+			label="#{resources.com_hsuforum_easportalm_entity_Group_system}"
+			required="true">
+			<f:selectItems value="#{groupManagedBean.systemList}" />
+		</p:selectOneMenu>
+
+	</h:panelGrid>
+</p:panel>
+<p />
+<p:panel
+	header="#{resources.com_hsuforum_easportalm_entity_Group_groupFunctions}">
+
+
+	<p:dataTable id="dataTableGroupFunction"
+		value="#{groupManagedBean.updatingData.functionVoList}"
+		var="functionVo">
+
+		<p:column id="columnId"
+			headerText="#{resources.com_hsuforum_easportalm_entity_Function_id}"
+			width="100">
+
+			<h:outputLabel value="#{functionVo.entity.name}" />
+
+		</p:column>
+		<p:column id="columnName"
+			headerText="#{resources.com_hsuforum_easportalm_entity_Function_name}">
+
+			<p:selectManyCheckbox layout="grid" columns="4"
+				value="#{functionVo.functionItemChecked}">
+				<f:selectItems value="#{functionVo.entity.functionItems}"
+					var="functionItem" itemLabel="#{functionItem.name}"
+					itemValue="#{functionItem.id}" />
+			</p:selectManyCheckbox>
+
+		</p:column>
+
+	</p:dataTable>
+
+</p:panel>
+
+</html>

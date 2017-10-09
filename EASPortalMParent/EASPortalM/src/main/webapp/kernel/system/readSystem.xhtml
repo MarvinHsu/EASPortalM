@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<body>
+	<ui:composition template="/template/backOfficeTemplate.xhtml">
+		<ui:define name="head">
+			<title>#{resources.com_hsuforum_easportalm_entity_System}</title>
+		</ui:define>
+		<ui:define name="main">
+			<h:form id="readForm">
+				<h3>#{resources.com_hsuforum_easportalm_entity_System}</h3>
+				<p:growl id="growl" />
+
+				<p:ajaxStatus onstart="PF('statusDialog').show()"
+					onsuccess="PF('statusDialog').hide()" />
+				<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+					closable="false" resizable="false" showHeader="false">
+					<p:graphicImage library="defaultTheme"
+						name="images/ajaxloadingbar.gif" />
+				</p:dialog>
+				<p:panel>
+					<h:panelGrid columns="2"
+						columnClasses="column35Class, column65Class" id="queryPanelGrid">
+
+
+						<h:outputText
+							value="#{resources.com_hsuforum_easportalm_entity_System_name}" />
+						<p:inputText value="#{systemManagedBean.findCriteriaMap['name']}"
+							label="#{resources.com_hsuforum_easportalm_entity_System_name}" />
+
+
+						<h:outputText
+							value="#{resources.com_hsuforum_easportalm_entity_System_sequence}" />
+						<p:inputText
+							value="#{systemManagedBean.findCriteriaMap['sequence']}"
+							label="#{resources.com_hsuforum_easportalm_entity_System_sequence}" />
+
+
+						<h:outputText
+							value="#{resources.com_hsuforum_easportalm_entity_System_code}" />
+						<p:inputText value="#{systemManagedBean.findCriteriaMap['code']}"
+							label="#{resources.com_hsuforum_easportalm_entity_System_code}" />
+
+
+						<h:outputText
+							value="#{resources.com_hsuforum_easportalm_entity_System_url}" />
+						<p:inputText value="#{systemManagedBean.findCriteriaMap['url']}"
+							label="#{resources.com_hsuforum_easportalm_entity_System_url}" />
+
+
+						<f:facet name="footer">
+							<h:panelGroup style="display:block; text-align:right">
+								<p:commandButton id="commandButtonFind"
+									action="#{systemManagedBean.doFindAction}"
+									value="#{resources.commandButtonFind}" update="dataTable"
+									rendered="#{menuManagedBean.isGrant('system','query')}"
+									accesskey="q" />
+								<p:commandButton id="commandButtonCreate"
+									action="#{systemManagedBean.doCreateAction}"
+									value="#{resources.commandButtonCreate}"
+									rendered="#{menuManagedBean.isGrant('system','create')}"
+									immediate="true" accesskey="c" ajax="false" />
+							</h:panelGroup>
+						</f:facet>
+					</h:panelGrid>
+				</p:panel>
+				<p />
+				<p:panel>
+					<p:dataTable id="dataTable" var="bo" paginator="true"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rows="#{defaultConfigManagedBean.rowsOfPerPage}"
+						rowsPerPageTemplate="#{defaultConfigManagedBean.rowsOfPerPage}"
+						value="#{systemManagedBean.dataModel}">
+
+						<p:column id="columnId" sortBy="#{bo.id}"
+							rendered="#{defaultConfigManagedBean.devMode}"
+							headerText="#{resources.com_hsuforum_easportalm_entity_System_id}">
+
+							<h:outputText value="#{bo.id}"
+								rendered="#{!menuManagedBean.isGrant('system','update')}" />
+							<h:commandLink value="#{bo.id}"
+								action="#{systemManagedBean.doUpdateAction}"
+								rendered="#{menuManagedBean.isGrant('system','update')}" />
+
+						</p:column>
+
+						<p:column id="columnName" sortBy="#{bo.name}"
+							headerText="#{resources.com_hsuforum_easportalm_entity_System_name}">
+
+							<h:outputLabel value="#{bo.name}" />
+						</p:column>
+
+
+
+						<p:column id="columnCode" sortBy="#{bo.code}"
+							headerText="#{resources.com_hsuforum_easportalm_entity_System_code}">
+
+							<h:outputLabel value="#{bo.code}" />
+						</p:column>
+						<p:column id="columnSequence" sortBy="#{bo.sequence}"
+							headerText="#{resources.com_hsuforum_easportalm_entity_System_sequence}">
+
+							<h:outputLabel value="#{bo.sequence}" />
+						</p:column>
+						<p:column id="columnUrl" sortBy="#{bo.url}"
+							headerText="#{resources.com_hsuforum_easportalm_entity_System_url}">
+
+							<h:outputLabel value="#{bo.url}" />
+						</p:column>
+
+
+					</p:dataTable>
+
+				</p:panel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

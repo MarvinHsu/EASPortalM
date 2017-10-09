@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:p="http://primefaces.org/ui">
+<p:panel>
+	<h:panelGrid columns="2" columnClasses="column35Class, column65Class">
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_GroupFunction_id}" />
+		<p:inputText value="#{groupFunctionManagedBean.updatingData.entity.id}"
+			label="#{resources.com_hsuforum_easportalm_entity_GroupFunction_id}"
+			readOnly="true" />
+
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_GroupFunction_group}" />
+		<p:selectOneMenu id="selectGroupId"
+			value="#{groupFunctionManagedBean.updatingData.selectGroupId}"
+			label="#{resources.com_hsuforum_easportalm_entity_GroupFunction_group}">
+			<f:selectItems value="#{groupFunctionManagedBean.groupList}" />
+		</p:selectOneMenu>
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_GroupFunction_functionItem}" />
+		<p:selectOneMenu id="selectFunctionItemId"
+			value="#{groupFunctionManagedBean.updatingData.selectFunctionItemId}"
+			label="#{resources.com_hsuforum_easportalm_entity_GroupFunction_functionItem}">
+			<f:selectItems value="#{groupFunctionManagedBean.functionItemList}" />
+		</p:selectOneMenu>
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_GroupFunction_function}" />
+		<p:selectOneMenu id="selectFunctionId"
+			value="#{groupFunctionManagedBean.updatingData.selectFunctionId}"
+			label="#{resources.com_hsuforum_easportalm_entity_GroupFunction_function}">
+			<f:selectItems value="#{groupFunctionManagedBean.functionList}" />
+		</p:selectOneMenu>
+
+
+	</h:panelGrid>
+</p:panel>
+
+
+</html>

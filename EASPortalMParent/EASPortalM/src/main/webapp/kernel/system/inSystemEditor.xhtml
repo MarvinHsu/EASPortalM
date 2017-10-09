@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:p="http://primefaces.org/ui">
+<p:panel>
+	<h:panelGrid columns="2" columnClasses="column35Class, column65Class">
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_System_id}" />
+		<p:inputText value="#{systemManagedBean.updatingData.entity.id}"
+			label="#{resources.com_hsuforum_easportalm_entity_System_id}"
+			readOnly="true" />
+
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_System_name}" />
+		<p:inputText id="inputTextName"
+			value="#{systemManagedBean.updatingData.entity.name}"
+			label="#{resources.com_hsuforum_easportalm_entity_System_name}"
+			required="true" />
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_System_code}" />
+		<p:inputText id="inputTextCode"
+			value="#{systemManagedBean.updatingData.entity.code}"
+			label="#{resources.com_hsuforum_easportalm_entity_System_code}"
+			required="true" />
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_System_sequence}" />
+		<p:inputText id="inputTextSequence"
+			value="#{systemManagedBean.updatingData.entity.sequence}"
+			style="text-align: right"
+			label="#{resources.com_hsuforum_easportalm_entity_System_sequence}"
+			required="true">
+			<f:convertNumber maxFractionDigits="0" minFractionDigits="0" />
+		</p:inputText>
+
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_System_url}" />
+		<p:inputText id="inputTextUrl"
+			value="#{systemManagedBean.updatingData.entity.url}"
+			label="#{resources.com_hsuforum_easportalm_entity_System_url}"
+			required="true" />
+
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_System_category}" />
+		<p:selectOneMenu id="selectCategoryId"
+			value="#{systemManagedBean.updatingData.selectCategoryId}" required="true"
+			label="#{resources.com_hsuforum_easportalm_entity_System_category}">
+			<f:selectItems value="#{systemManagedBean.categoryList}" />
+		</p:selectOneMenu>
+
+
+	</h:panelGrid>
+</p:panel>
+
+
+</html>
