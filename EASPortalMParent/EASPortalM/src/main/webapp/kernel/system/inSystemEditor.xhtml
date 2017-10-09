@@ -54,8 +54,9 @@
 			label="#{resources.com_hsuforum_easportalm_entity_System_category}">
 			<f:selectItems value="#{systemManagedBean.categoryList}" />
 		</p:selectOneMenu>
-
-
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_System_openWindow}" />
+		<p:selectBooleanCheckbox value="#{systemManagedBean.updatingData.entity.openWindow}"/>
 	</h:panelGrid>
 </p:panel>
 
