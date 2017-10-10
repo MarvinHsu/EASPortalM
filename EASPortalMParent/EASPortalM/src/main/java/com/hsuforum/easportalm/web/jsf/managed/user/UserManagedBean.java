@@ -218,7 +218,7 @@ public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, jav
 	 */
 	@Override
 	protected void setupUpdatingData() {
-		
+		this.getUpdatingData().getEntity().setAccount(this.getUpdatingData().getEntity().getAccount().toUpperCase());
 		this.setupGroup();
 	}
 
