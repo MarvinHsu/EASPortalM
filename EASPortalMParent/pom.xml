@@ -9,6 +9,7 @@
 		<module>EASPortalM</module>
 		<module>EASPortalMJBossDB2</module>
 		<module>EASPortalMJBossMySQL</module>
+		<module>EASPortalMJBossOracle</module>
 		<module>EASPortalMTomcatDB2</module>
 		<module>EASPortalMTomcatMySQL</module>
 		<module>EASPortalMTomcatOracle</module>
@@ -445,7 +446,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
+				<version>3.1.0</version>
 				<configuration>
 
 					<webResources>
