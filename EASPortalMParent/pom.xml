@@ -11,6 +11,7 @@
 		<module>EASPortalMJBossMySQL</module>
 		<module>EASPortalMTomcatDB2</module>
 		<module>EASPortalMTomcatMySQL</module>
+		<module>EASPortalMTomcatOracle</module>
 
 	</modules>
 	<properties>
