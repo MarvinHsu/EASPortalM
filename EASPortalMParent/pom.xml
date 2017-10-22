@@ -10,6 +10,7 @@
 		<module>EASPortalMJBossDB2</module>
 		<module>EASPortalMJBossMySQL</module>
 		<module>EASPortalMJBossOracle</module>
+		<module>EASPortalMJBossSQLServer</module>
 		<module>EASPortalMTomcatDB2</module>
 		<module>EASPortalMTomcatMySQL</module>
 		<module>EASPortalMTomcatOracle</module>
