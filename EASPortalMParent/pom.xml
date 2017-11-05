@@ -14,8 +14,8 @@
 		<module>EASPortalMTomcatDB2</module>
 		<module>EASPortalMTomcatMySQL</module>
 		<module>EASPortalMTomcatOracle</module>
+		<module>EASPortalMTomcatPostgreSQL</module>
 		<module>EASPortalMTomcatSQLServer</module>
-		
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
