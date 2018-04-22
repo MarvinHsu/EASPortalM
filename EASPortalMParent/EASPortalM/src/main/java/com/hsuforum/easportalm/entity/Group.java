@@ -27,7 +27,7 @@ import com.hsuforum.common.entity.impl.BaseEntityImpl;
  */
 @XmlRootElement
 @Entity
-@Table(name = "tb_groups")
+@Table(name = "TB_GROUPS")
 @NamedQueries({ @NamedQuery(name = "Group.findAll", query = "SELECT t FROM Group t"),
 		@NamedQuery(name = "Group.findById", query = "SELECT t FROM Group t WHERE t.id = :id"),
 		@NamedQuery(name = "Group.findByName", query = "SELECT t FROM Group t WHERE t.name = :name"),
@@ -90,7 +90,7 @@ public class Group extends BaseEntityImpl<String> implements GrantedAuthority {
 
 	// bi-directional many-to-one association to Category
 	@ManyToOne
-	@JoinColumn(name = "tb_systems_id")
+	@JoinColumn(name = "TB_SYSTEMS_id")
 	public System getSystem() {
 		return this.system;
 	}

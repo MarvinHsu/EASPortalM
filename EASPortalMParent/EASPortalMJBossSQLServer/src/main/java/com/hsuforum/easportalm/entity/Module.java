@@ -25,7 +25,7 @@ import com.hsuforum.common.entity.impl.BaseEntityImpl;
  */
 
 @Entity
-@Table(name = "tb_modules")
+@Table(name = "TB_MODULES")
 @NamedQueries({ @NamedQuery(name = "Module.findAll", query = "SELECT m FROM Module m"),
 		@NamedQuery(name = "Module.findById", query = "SELECT m FROM Module m WHERE m.id = :id"),
 		@NamedQuery(name = "Module.findByName", query = "SELECT m FROM Module m WHERE m.name = :name"),
@@ -121,7 +121,7 @@ public class Module extends BaseEntityImpl<String> {
 
 	// bi-directional many-to-one association to Category
 	@ManyToOne
-	@JoinColumn(name = "tb_systems_id")
+	@JoinColumn(name = "TB_SYSTEMS_id")
 	public System getSystem() {
 		return this.system;
 	}

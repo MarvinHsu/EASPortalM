@@ -23,7 +23,7 @@ import com.hsuforum.common.entity.impl.BaseEntityImpl;
  */
 
 @Entity
-@Table(name = "tb_functions_items")
+@Table(name = "TB_FUNCTIONS_ITEMS")
 @NamedQuery(name = "FunctionItem.findAll", query = "SELECT f FROM FunctionItem f")
 public class FunctionItem extends BaseEntityImpl<String> {
 	private static final long serialVersionUID = 1L;

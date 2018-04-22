@@ -38,7 +38,7 @@ import com.hsuforum.common.web.util.TranslationUtils;
  */
 
 @Entity
-@Table(name = "tb_users")
+@Table(name = "TB_USERS")
 @EntityListeners({ SystemDateEntityListener.class })
 @NamedQueries({ @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
 		@NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id"),
@@ -142,7 +142,7 @@ public class User extends BaseEntityImpl<String> implements SystemDateOperation,
 	}
 	// bi-directional many-to-many association to Group
 	@ManyToMany(targetEntity = Group.class, cascade = { CascadeType.MERGE })
-	@JoinTable(name = "tb_users_groups", joinColumns = {
+	@JoinTable(name = "TB_USERS_GROUPS", joinColumns = {
 			@JoinColumn(name = "TB_USERS_ID", nullable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "TB_GROUPS_ID", nullable = false) })
 	public Set<Group> getGroups() {

@@ -16,7 +16,7 @@ import com.hsuforum.common.entity.impl.BaseEntityImpl;
  */
 
 @Entity
-@Table(name = "tb_groups_functions")
+@Table(name = "TB_GROUPS_FUNCTIONS")
 @NamedQuery(name = "GroupFunction.findAll", query = "SELECT g FROM GroupFunction g")
 public class GroupFunction extends BaseEntityImpl<GroupFunctionPK> {
 	private static final long serialVersionUID = 1L;

@@ -30,7 +30,7 @@ import com.hsuforum.common.entity.impl.SystemDateEntityListener;
  */
 
 @Entity
-@Table(name = "tb_functions")
+@Table(name = "TB_FUNCTIONS")
 @EntityListeners({ SystemDateEntityListener.class })
 @NamedQuery(name = "Function.findAll", query = "SELECT f FROM Function f")
 public class Function extends BaseEntityImpl<String> implements SystemDateOperation {
@@ -134,7 +134,7 @@ public class Function extends BaseEntityImpl<String> implements SystemDateOperat
 
 	// bi-directional many-to-one association to Category
 	@ManyToOne
-	@JoinColumn(name = "tb_systems_id")
+	@JoinColumn(name = "TB_SYSTEMS_id")
 	public System getSystem() {
 		return this.system;
 	}
