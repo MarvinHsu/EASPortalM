@@ -16,12 +16,12 @@ import javax.persistence.Table;
 import com.hsuforum.common.entity.impl.BaseEntityImpl;
 
 /**
- * The persistent class for the tb_systems database table.
+ * The persistent class for the TB_SYSTEMS database table.
  * 
  */
 
 @Entity
-@Table(name = "tb_systems")
+@Table(name = "TB_SYSTEMS")
 @NamedQuery(name = "System.findAll", query = "SELECT s FROM System s")
 public class System extends BaseEntityImpl<String> {
 
@@ -101,7 +101,7 @@ public class System extends BaseEntityImpl<String> {
 
 	// bi-directional many-to-one association to Category
 	@ManyToOne
-	@JoinColumn(name = "tb_categories_id")
+	@JoinColumn(name = "TB_CATEGORIES_id")
 	public Category getCategory() {
 		return this.category;
 	}

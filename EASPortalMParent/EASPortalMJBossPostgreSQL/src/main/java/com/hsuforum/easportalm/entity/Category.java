@@ -15,12 +15,12 @@ import com.hsuforum.common.entity.impl.BaseEntityImpl;
 
 
 /**
- * The persistent class for the tb_categories database table.
+ * The persistent class for the TB_CATEGORIES database table.
  * 
  */
 
 @Entity
-@Table(name="tb_categories")
+@Table(name="TB_CATEGORIES")
 @NamedQuery(name="Category.findAll", query="SELECT c FROM Category c")
 public class Category extends BaseEntityImpl<String> {
 	
