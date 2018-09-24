@@ -12,7 +12,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jasig.cas.client.authentication.AttributePrincipal;
@@ -20,7 +19,6 @@ import org.primefaces.component.accordionpanel.AccordionPanel;
 import org.primefaces.event.TabChangeEvent;
 
 import com.hsuforum.common.web.jsf.utils.JSFUtils;
-import com.hsuforum.easportalm.entity.FunctionCode;
 import com.hsuforum.easportalm.web.config.DefaultConfigManagedBean;
 import com.hsuforum.easportalm.ws.client.PortalClient;
 import com.hsuforum.easportalm.ws.vo.FunctionWSVO2;
@@ -114,14 +112,8 @@ public class MenuManagedBean implements Serializable {
 		String obj = (String) event.getComponent().getAttributes().get("functionCode");
 
 		// Remove managed bean of session
-		for (FunctionCode functionCode : FunctionCode.values()) {
-			if (!StringUtils.isBlank(functionCode.getManagedBean())) {
-				if (obj.equals(functionCode.getCode())) {
-					FacesContext context = FacesContext.getCurrentInstance();
-					context.getExternalContext().getSessionMap().remove(functionCode.getManagedBean());
-				}
-			}
-		}
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().getSessionMap().remove(obj+"ManagedBean");
 
 	}
 
