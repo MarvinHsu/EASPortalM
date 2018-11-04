@@ -33,7 +33,12 @@
 			label="#{resources.com_hsuforum_easportalm_entity_User_account}"
 			required="true" />
 
-
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_User_enabled}" />
+			
+		<p:selectBooleanCheckbox id="checkboxEnabled"
+			value="#{userManagedBean.updatingData.entity.enabled}"
+			label="#{resources.com_hsuforum_easportalm_entity_User_enabled}" />
 
 	</h:panelGrid>
 </p:panel>

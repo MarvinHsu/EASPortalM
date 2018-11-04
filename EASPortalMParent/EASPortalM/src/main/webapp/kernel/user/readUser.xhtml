@@ -98,6 +98,13 @@
 
 							<h:outputLabel value="#{bo.account}" />
 						</p:column>
+						
+						<p:column id="columnEnabled" sortBy="#{bo.enabled}"
+							headerText="#{resources.com_hsuforum_easportalm_entity_User_enabled}">
+
+							<h:outputLabel value="#{bo.enabled}" />
+						</p:column>
+						
 						<p:column id="columnCreateDate" sortBy="#{bo.createDate}"
 							headerText="#{resources.com_hsuforum_easportalm_entity_User_createDate}">
 
