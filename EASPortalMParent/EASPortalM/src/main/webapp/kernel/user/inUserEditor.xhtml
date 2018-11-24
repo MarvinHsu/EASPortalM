@@ -6,7 +6,7 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:p="http://primefaces.org/ui">
 <p:panel>
-	<h:panelGrid columns="2" columnClasses="column35Class, column65Class">
+	<p:panelGrid columns="2">
 
 		<h:outputText value="#{resources.com_hsuforum_easportalm_entity_User_id}" />
 		<p:inputText value="#{userManagedBean.updatingData.entity.id}"
@@ -40,7 +40,7 @@
 			value="#{userManagedBean.updatingData.entity.enabled}"
 			label="#{resources.com_hsuforum_easportalm_entity_User_enabled}" />
 
-	</h:panelGrid>
+	</p:panelGrid>
 </p:panel>
 
 <p />

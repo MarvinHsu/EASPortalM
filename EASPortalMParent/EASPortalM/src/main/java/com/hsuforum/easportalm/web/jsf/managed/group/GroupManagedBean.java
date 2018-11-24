@@ -2,6 +2,7 @@ package com.hsuforum.easportalm.web.jsf.managed.group;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
 import org.apache.commons.lang3.StringUtils;
@@ -55,7 +57,7 @@ public class GroupManagedBean extends TemplatePrimeDataTableManagedBean<Group, j
 	@ManagedProperty(value = "#{systemService}")
 	private SystemService systemService;
 	private List<SelectItem> systemList;
-
+	
 	public GroupManagedBean() {
 
 		super();
@@ -85,7 +87,17 @@ public class GroupManagedBean extends TemplatePrimeDataTableManagedBean<Group, j
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
-
+	/**
+	 * in update mode system can't change
+	 * @return
+	 */
+	public boolean isDisabledSystem() {
+		if(this.getMode().equals("Update")) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 	/**
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#initCreatingData()
 	 */
@@ -95,6 +107,15 @@ public class GroupManagedBean extends TemplatePrimeDataTableManagedBean<Group, j
 		object.setId(UUID.randomUUID().toString());
 		this.setUpdatingData(this.wrap(object));
 		this.getUpdatingData().setUserList(this.getUserList());
+		this.getUpdatingData().getEntity().setGroupFunctions(new HashSet<GroupFunction>());
+		this.getUpdatingData().setFunctionVoList(new ArrayList<FunctionVo>());
+		
+		for (Function function : this.getFunctionList()) {
+			FunctionVoWrapper functionVoWrapper = new FunctionVoWrapper();
+			FunctionVo functionVo = functionVoWrapper.wrap(function);
+			this.getUpdatingData().getFunctionVoList().add(functionVo);
+		}
+		
 		this.setMode("Create");
 
 	}
@@ -364,5 +385,14 @@ public class GroupManagedBean extends TemplatePrimeDataTableManagedBean<Group, j
 	protected List<Group> findAllData() {
 		return this.getService().findAllFetchRelation();
 	}
-
+	public void handleChangeSystem(ValueChangeEvent event){  
+	    String systemId=event.getNewValue().toString();
+	    this.getUpdatingData().getFunctionVoList().clear();
+	    this.getUpdatingData().setSelectSystemId(systemId);
+	    for (Function function : this.getFunctionList()) {
+			FunctionVoWrapper functionVoWrapper = new FunctionVoWrapper();
+			FunctionVo functionVo = functionVoWrapper.wrap(function);
+			this.getUpdatingData().getFunctionVoList().add(functionVo);
+		}
+	}
 }

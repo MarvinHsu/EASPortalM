@@ -78,7 +78,17 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
-
+	/**
+	 * in update mode system can't change
+	 * @return
+	 */
+	public boolean isDisabledSystem() {
+		if(this.getMode().equals("Update")) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 	/**
 	 * 初始新增物件
 	 * 
