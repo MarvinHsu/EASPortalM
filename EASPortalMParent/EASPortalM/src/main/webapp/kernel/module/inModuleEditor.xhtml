@@ -6,7 +6,7 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:p="http://primefaces.org/ui">
 <p:panel>
-	<h:panelGrid columns="2" columnClasses="column35Class, column65Class">
+	<p:panelGrid columns="2">
 
 		<h:outputText
 			value="#{resources.com_hsuforum_easportalm_entity_Module_id}" />
@@ -41,7 +41,7 @@
 
 		<h:outputText
 			value="#{resources.com_hsuforum_easportalm_entity_Module_system}" />
-		<p:selectOneMenu id="selectSystemId"
+		<p:selectOneMenu id="selectSystemId" disabled="#{moduleManagedBean.disabledSystem}"
 			value="#{moduleManagedBean.updatingData.selectSystemId}"
 			label="#{resources.com_hsuforum_easportalm_entity_Module_system}"
 			required="true">
@@ -49,7 +49,7 @@
 		</p:selectOneMenu>
 
 
-	</h:panelGrid>
+	</p:panelGrid>
 </p:panel>
 
 

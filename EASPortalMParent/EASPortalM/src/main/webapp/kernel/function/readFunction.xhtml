@@ -22,8 +22,7 @@
 						name="images/ajaxloadingbar.gif" />
 				</p:dialog>
 				<p:panel>
-					<h:panelGrid columns="2"
-						columnClasses="column35Class, column65Class" id="queryPanelGrid">
+					<p:panelGrid columns="2" id="queryPanelGrid">
 
 
 						<h:outputText
@@ -65,7 +64,7 @@
 									immediate="true" accesskey="c" ajax="false" />
 							</h:panelGroup>
 						</f:facet>
-					</h:panelGrid>
+					</p:panelGrid>
 				</p:panel>
 				<p />
 				<p:panel>
@@ -90,7 +89,11 @@
 						<p:column id="columnName" sortBy="#{bo.name}"
 							headerText="#{resources.com_hsuforum_easportalm_entity_Function_name}">
 
-							<h:outputLabel value="#{bo.name}" />
+							<h:outputText value="#{bo.name}"
+								rendered="#{!menuManagedBean.isGrant('function','update')}" />
+							<h:commandLink value="#{bo.name}"
+								action="#{functionManagedBean.doUpdateAction}"
+								rendered="#{menuManagedBean.isGrant('function','update')}" />
 						</p:column>
 						<p:column id="columnCode" sortBy="#{bo.code}"
 							headerText="#{resources.com_hsuforum_easportalm_entity_Function_code}">
