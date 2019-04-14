@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hsuforum.EASPortalM</groupId>
 	<artifactId>EASPortalMParent</artifactId>
-	<version>1.0.5</version>
+	<version>1.0.6</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>EASPortalM</module>
@@ -22,8 +22,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<primefaces.version>6.2</primefaces.version>
 		<primefaces.extension.version>6.2</primefaces.extension.version>
-		<spring.version>5.1.5.RELEASE</spring.version>
-		<springSecurity.version>5.1.4.RELEASE</springSecurity.version>
+		<spring.version>5.1.6.RELEASE</spring.version>
+		<springSecurity.version>5.1.5.RELEASE</springSecurity.version>
+		<springData.version>Lovelace-SR6</springData.version>
 		<jackson.version>2.9.8</jackson.version>
 		<java.version>1.8</java.version>
 	</properties>
@@ -229,6 +230,10 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -453,25 +458,31 @@
 			<dependency>
 				<groupId>com.hsuforum.HSUCommonParent</groupId>
 				<artifactId>CommonEntity</artifactId>
-				<version>2.0.5</version>
+				<version>3.0.0</version>
 			</dependency>
 			<dependency>
 				<groupId>com.hsuforum.HSUCommonParent</groupId>
 				<artifactId>CommonDao</artifactId>
-				<version>2.0.5</version>
+				<version>3.0.0</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.hsuforum.HSUCommonParent</groupId>
 				<artifactId>CommonService</artifactId>
-				<version>2.0.5</version>
+				<version>3.0.0</version>
 			</dependency>
 			<dependency>
 				<groupId>com.hsuforum.HSUCommonParent</groupId>
 				<artifactId>CommonWeb</artifactId>
-				<version>2.0.5</version>
+				<version>3.0.0</version>
 			</dependency>
-
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-releasetrain</artifactId>
+				<version>${springData.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>
