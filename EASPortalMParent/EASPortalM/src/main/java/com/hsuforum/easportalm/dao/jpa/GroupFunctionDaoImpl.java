@@ -12,7 +12,7 @@ import com.hsuforum.easportalm.dao.GroupFunctionDao;
 import com.hsuforum.easportalm.entity.GroupFunction;
 
 @Repository("groupFunctionDao")
-public class GroupFunctionDaoImpl extends BaseDaoImpl<GroupFunction, com.hsuforum.easportalm.entity.GroupFunctionPK>
+public class GroupFunctionDaoImpl extends BaseDaoImpl<GroupFunction, String>
 		implements GroupFunctionDao {
 
 

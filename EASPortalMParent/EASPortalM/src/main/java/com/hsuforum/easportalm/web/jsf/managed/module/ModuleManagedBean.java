@@ -12,10 +12,11 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
 import com.hsuforum.easportalm.entity.Module;
 import com.hsuforum.easportalm.entity.System;
+import com.hsuforum.easportalm.service.ModuleJpaService;
 import com.hsuforum.easportalm.service.ModuleService;
 import com.hsuforum.easportalm.service.SystemService;
 import com.hsuforum.easportalm.web.util.SelectHelper;
@@ -24,17 +25,18 @@ import com.hsuforum.easportalm.web.vowrapper.ModuleVoWrapper;
 
 @ManagedBean
 @SessionScoped
-public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module, java.lang.String, ModuleService> {
+public class ModuleManagedBean extends TemplatePrimeJpaDataTableManagedBean<Module, String, ModuleService, ModuleJpaService> {
 
 	private static final long serialVersionUID = 1L;
 
-	// 新增或修改狀態，新增為Create，修改為Update，用於detail時返回正確路徑用
+	// Create or update status, create is Create, update is Update for finding real page to return in detail page
 	private String mode;
 
-	// managedBean的主要使用service
+	// Main serive in managedBean
 	@ManagedProperty(value = "#{moduleService}")
 	private ModuleService service;
-
+	@ManagedProperty(value = "#{moduleJpaService}")
+	private ModuleJpaService jpaService;
 	// SystemService
 	@ManagedProperty(value = "#{systemService}")
 	private SystemService systemService;
@@ -42,7 +44,7 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 	// private Map<String, System> systemMap;
 
 	/**
-	 * 建構子
+	 * Constructor
 	 */
 	public ModuleManagedBean() {
 
@@ -51,15 +53,15 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 	}
 
 	/**
-	 * 初始設定
+	 * Init config
 	 */
 	@PostConstruct
 	public void init() {
-		// 設定是否一進頁面，即秀出資料
+		// Set show data in read page
 		this.setInitShowListData(true);
-		// 初始話查詢條件
+		// Init find criteria
 		this.initFindCriteriaMap();
-		// 設定VoWrapper
+		// Set vo wrapper
 		this.setVoWrapper(new ModuleVoWrapper());
 
 	}
@@ -90,7 +92,7 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 		}
 	}
 	/**
-	 * 初始新增物件
+	 * Init create object
 	 * 
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBean#initCreatingData()
 	 *
@@ -106,14 +108,14 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 	}
 
 	/**
-	 * 如需要再create or update按鈕按下後，對updating
-	 * date進行處理，則需要撰寫此部分。但不管怎樣都需要override此method
+	 * If you need to process updating data after press create or update button, you
+	 * need override this method
 	 * 
 	 */
 	@Override
 	protected void initUpdatingData(ValueObject<Module, java.lang.String> updatingData) {
 
-		// 設定頁面上的下拉式選單(drop Down List for Many-to-one)設定
+		// Set drop down list for many-to-one
 		if (this.getUpdatingData().getEntity().getSystem() != null) {
 			this.getUpdatingData().setSelectSystemId(this.getUpdatingData().getEntity().getSystem().getId().toString());
 
@@ -124,13 +126,13 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 	}
 
 	/**
-	 * 在read頁面下，如有查詢輸入時，則續在建構子呼叫此函數來設定findCriteriaMap 如需要可斟酌修改
+	 * Init find criteria map, find oper map and find sort map
 	 * 
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplateDataTableManagedBean#initFindCriteriaMap()
 	 */
 	@Override
 	protected void initFindCriteriaMap() {
-		// 目前只能先用String
+		
 		Map<String, Object> findCriteriaMap = new HashMap<String, Object>();
 
 		findCriteriaMap.put("name", null);
@@ -138,7 +140,7 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 		findCriteriaMap.put("sequence", null);
 		findCriteriaMap.put("system.id", null);
 		this.setFindCriteriaMap(findCriteriaMap);
-		// 設定操作
+		// Set operation
 		Map<String, String> findOperMap = new HashMap<String, String>();
 
 		findOperMap.put("name", "eq");
@@ -147,7 +149,7 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 		findOperMap.put("system.id", "eq");
 		this.setFindOperMap(findOperMap);
 
-		// 設定排序
+		// Set sort
 		Map<String, String> findSortMap = new HashMap<String, String>();
 
 		findSortMap.put("name", "ASC");
@@ -158,8 +160,6 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 	}
 
 	/**
-	 * getUpdatingData 和 setUpdatingData 其實可以不需要, 因為 super class 已經有了 存在的目的,
-	 * 只是為了讓 IDE 知道它的確切的type為何, 讓 jsf 的頁面比較好拖拉
 	 * 
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBean#getUpdatingData()
 	 *
@@ -170,7 +170,7 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 	}
 
 	/**
-	 * 設定UpdatingData
+	 * Set UpdatingData
 	 * 
 	 */
 	@Override
@@ -179,7 +179,7 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 	}
 
 	/**
-	 * 取得Service物件
+	 * Get service
 	 */
 	@Override
 	public ModuleService getService() {
@@ -188,7 +188,7 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 	}
 
 	/**
-	 * 設定該ManagedBean的主要service
+	 * Set service
 	 * 
 	 * @param service
 	 */
@@ -197,23 +197,30 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 		this.service = service;
 	}
 
+	public ModuleJpaService getJpaService() {
+		return jpaService;
+	}
+
+	public void setJpaService(ModuleJpaService jpaService) {
+		this.jpaService = jpaService;
+	}
+
 	/**
-	 * 取得頁面中所使用的，下拉式選單SelectItem內容
+	 * Get drop down list select item in edit page
 	 * 
-	 * @return 下拉式選單SelectItem內容
+	 * @return 
 	 */
 	public List<SelectItem> getSystemList() {
 
 		if (this.systemList == null) {
 			this.systemList = new ArrayList<SelectItem>();
-			// 第一個SelectItem為預設為SelectHelper.EMPTY_SELECTITEM
+			// First SelectItem default is SelectHelper.EMPTY_SELECTITEM
 			this.systemList.add(SelectHelper.EMPTY_SELECTITEM);
 			for (System system : getSystemService().findAll()) {
 				SelectItem item = new SelectItem();
 
 				/**
-				 * 由於不是每個Entity(Business
-				 * Object)都有name屬性，所以有可能需要修正setLabel()，不然就是Entity的toString()必須實作需要的部分
+				 * Because entity may not have name property, so you may modify setLabel()
 				 *
 				 */
 
@@ -228,7 +235,7 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 
 
 	/**
-	 * 回傳SystemService
+	 * Return SystemService
 	 * 
 	 * @return SystemService
 	 */
@@ -237,7 +244,7 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 	}
 
 	/**
-	 * 設定SystemService
+	 * Set SystemService
 	 * 
 	 * @param SystemService
 	 */
@@ -246,10 +253,10 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 	}
 
 	/**
-	 * 設定System
+	 * Setup System
 	 */
 	private void setupSystem() {
-		// 所選取的id可能會為null或空字串("")，所以皆需檢核
+		// Because select id may be null or empty string, so you need to check
 		if ((this.getUpdatingData().getSelectSystemId() != null)
 				&& (this.getUpdatingData().getSelectSystemId().compareTo("") != 0)) {
 			this.getUpdatingData().getEntity()
@@ -269,9 +276,10 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 	}
 
 	/**
-	 * 假如Entity(Business Object)，有Many-to-One或Many-to-Many的狀況， 則Code
-	 * Generator會自動Override以供修改使用，可自行改成需要的Method，
-	 * 主要作用是在read頁面就Fetch所有相關關聯的資料，免得再update頁面出現問題
+	 * If entity has many-to-one or many-to-many relation then Code Generator will
+	 * make this method for modifying. You can modify it for your need Method. The
+	 * main function is in read page fetch all relational date to avoid update page
+	 * occur error.
 	 * 
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplateDataTableManagedBean#findAllData()
 	 */

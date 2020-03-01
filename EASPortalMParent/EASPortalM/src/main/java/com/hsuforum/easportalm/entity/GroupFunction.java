@@ -1,8 +1,9 @@
 package com.hsuforum.easportalm.entity;
 
-import javax.persistence.EmbeddedId;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
@@ -19,9 +20,9 @@ import com.hsuforum.common.entity.impl.BaseEntityImpl;
 @Entity
 @Table(name = "TB_GROUPS_FUNCTIONS")
 @NamedQuery(name = "GroupFunction.findAll", query = "SELECT g FROM GroupFunction g")
-public class GroupFunction extends BaseEntityImpl<GroupFunctionPK> {
+public class GroupFunction extends BaseEntityImpl<String> {
 	private static final long serialVersionUID = 1L;
-	private GroupFunctionPK id;
+	private String id;
 	private Function function;
 	private FunctionItem functionItem;
 	private Group group;
@@ -29,12 +30,13 @@ public class GroupFunction extends BaseEntityImpl<GroupFunctionPK> {
 	public GroupFunction() {
 	}
 
-	@EmbeddedId
-	public GroupFunctionPK getId() {
+	@Id
+	@Column(name = "ID", nullable = false)
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(GroupFunctionPK id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

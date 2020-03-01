@@ -14,7 +14,7 @@ import com.hsuforum.easportalm.service.GroupFunctionService;
 
 @Service("groupFunctionService")
 public class GroupFunctionServiceImpl
-		extends BaseServiceImpl<GroupFunction, com.hsuforum.easportalm.entity.GroupFunctionPK, GroupFunctionDao>
+		extends BaseServiceImpl<GroupFunction, String, GroupFunctionDao>
 		implements GroupFunctionService {
 
 
