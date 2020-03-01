@@ -13,18 +13,19 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
 import com.hsuforum.easportalm.entity.Group;
 import com.hsuforum.easportalm.entity.User;
 import com.hsuforum.easportalm.service.GroupService;
+import com.hsuforum.easportalm.service.UserJpaService;
 import com.hsuforum.easportalm.service.UserService;
 import com.hsuforum.easportalm.web.vo.UserVo;
 import com.hsuforum.easportalm.web.vowrapper.UserVoWrapper;
 
 @ManagedBean
 @SessionScoped
-public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, java.lang.String, UserService> {
+public class UserManagedBean extends TemplatePrimeJpaDataTableManagedBean<User, java.lang.String, UserService, UserJpaService> {
 
 	private static final long serialVersionUID = 4704000081629878950L;
 
@@ -33,7 +34,8 @@ public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, jav
 	@ManagedProperty(value = "#{userService}")
 	private UserService service;
 
-	
+	@ManagedProperty(value = "#{userJpaService}")
+	private UserJpaService jpaService;
 
 	@ManagedProperty(value = "#{groupService}")
 	private GroupService groupService;
@@ -85,6 +87,8 @@ public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, jav
 
 
 	/**
+	 * If you need to process updating data after press create or update button, you
+	 * need override this method 
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#initUpdatingData(com.hsuforum.common.web.vo.ValueObject)
 	 */
 	@Override
@@ -162,7 +166,6 @@ public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, jav
 		return this.service;
 	}
 
-
 	/**
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#setService(com.hsuforum.common.service.BaseService)
 	 */
@@ -171,11 +174,14 @@ public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, jav
 	}
 
 
-	
+	public UserJpaService getJpaService() {
+		return jpaService;
+	}
 
+	public void setJpaService(UserJpaService jpaService) {
+		this.jpaService = jpaService;
+	}
 
-
-	
 	public List<Group> getGroupList() {
 
 		List<Group> manyBoList = new ArrayList<Group>();
@@ -224,6 +230,10 @@ public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, jav
 
 
 	/**
+	 * If entity has many-to-one or many-to-many relation then Code Generator will
+	 * make this method for modifying. You can modify it for your need Method. The
+	 * main function is in read page fetch all relational date to avoid update page
+	 * occur error.
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean#findAllData()
 	 */
 	@Override

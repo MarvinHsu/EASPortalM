@@ -10,58 +10,54 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
 import com.hsuforum.easportalm.entity.Category;
+import com.hsuforum.easportalm.service.CategoryJpaService;
 import com.hsuforum.easportalm.service.CategoryService;
 import com.hsuforum.easportalm.web.vo.CategoryVo;
 import com.hsuforum.easportalm.web.vowrapper.CategoryVoWrapper;
 
-	
-
-
-
 @ManagedBean
 @SessionScoped
-public class CategoryManagedBean extends TemplatePrimeDataTableManagedBean
-	<Category, java.lang.String, CategoryService>{
+public class CategoryManagedBean
+		extends TemplatePrimeJpaDataTableManagedBean<Category, java.lang.String, CategoryService, CategoryJpaService> {
 
 	private static final long serialVersionUID = 1L;
 
-	// 新增或修改狀態，新增為Create，修改為Update，用於detail時返回正確路徑用
+	// Create or update status, create is Create, update is Update for finding real page to return in detail page
 	private String mode;
 
+	// Main serive in managedBean
+	@ManagedProperty(value = "#{categoryService}")
+	private CategoryService service;
 
-
-	//managedBean的主要使用service
-	@ManagedProperty(value="#{categoryService}")
-    private CategoryService service;
-
-
+	@ManagedProperty(value = "#{categoryJpaService}")
+	private CategoryJpaService jpaService;
 
 	/**
-	 * 建構子
+	 * Constructor
 	 */
 	public CategoryManagedBean() {
-		
+
 		super();
 
 	}
-	
+
 	/**
-	 * 初始設定
+	 * Init config
 	 */
 	@PostConstruct
 	public void init() {
-		//設定是否一進頁面，即秀出資料
+		// Set show data in read page
 		this.setInitShowListData(true);
-		//初始話查詢條件
+		// Init find criteria
 		this.initFindCriteriaMap();
-		//設定VoWrapper
+		// Set vo wrapper
 		this.setVoWrapper(new CategoryVoWrapper());
-	
+
 	}
-	
+
 	/**
 	 * @return the mode
 	 */
@@ -76,10 +72,9 @@ public class CategoryManagedBean extends TemplatePrimeDataTableManagedBean
 		this.mode = mode;
 	}
 
-		
-
 	/**
-	 * 初始新增物件
+	 * Init create object
+	 * 
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBean#initCreatingData()
 	 *
 	 */
@@ -88,79 +83,70 @@ public class CategoryManagedBean extends TemplatePrimeDataTableManagedBean
 		Category object = new Category();
 		object.setId(UUID.randomUUID().toString());
 		this.setUpdatingData(this.wrap(object));
-		
+
 		this.setMode("Create");
-		
-		}
-	
+
+	}
+
 	/**
-	 * 如需要再create or update按鈕按下後，對updating date進行處理，則需要撰寫此部分。但不管怎樣都需要override此method
+	 * If you need to process updating data after press create or update button, you need override this method
 	 * 
 	 */
 	@Override
 	protected void initUpdatingData(ValueObject<Category, java.lang.String> updatingData) {
-	
 
 		this.setMode("Update");
-		
-		}
 
-    /**
-	 * 在read頁面下，如有查詢輸入時，則續在建構子呼叫此函數來設定findCriteriaMap
-	 * 如需要可斟酌修改
+	}
+
+	/**
+	 * Init find criteria map, find oper map and find sort map
+	 * 
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplateDataTableManagedBean#initFindCriteriaMap()
 	 */
 	@Override
 	protected void initFindCriteriaMap() {
-		//目前只能先用String
+		
 		Map<String, Object> findCriteriaMap = new HashMap<String, Object>();
-		
-		
-								
-					findCriteriaMap.put("name", null);
-						
-				
-								
-					findCriteriaMap.put("code", null);
-						
-				
-								
-					findCriteriaMap.put("sequence", null);
-						
-					
-		this.setFindCriteriaMap(findCriteriaMap);
-		//設定操作
-        Map<String, String> findOperMap = new HashMap<String, String>();    
 
-    		findOperMap.put("name", "eq");		
-			findOperMap.put("code", "eq");		
-			findOperMap.put("sequence", "eq");		
-	        
-        this.setFindOperMap(findOperMap);
-        
-        //設定排序
-        Map<String, String> findSortMap = new HashMap<String, String>();
-        
-    		findSortMap.put("name", "DESC");		
-			findSortMap.put("code", "DESC");		
-			findSortMap.put("sequence", "DESC");		
-	        
-        this.setFindSortMap(findSortMap);
+		findCriteriaMap.put("name", null);
+		findCriteriaMap.put("code", null);
+		findCriteriaMap.put("sequence", null);
+
+		this.setFindCriteriaMap(findCriteriaMap);
+		// Set operation
+		Map<String, String> findOperMap = new HashMap<String, String>();
+
+		findOperMap.put("name", "eq");
+		findOperMap.put("code", "eq");
+		findOperMap.put("sequence", "eq");
+
+		this.setFindOperMap(findOperMap);
+
+		// Set sort
+		Map<String, String> findSortMap = new HashMap<String, String>();
+
+		findSortMap.put("name", "DESC");
+		findSortMap.put("code", "DESC");
+		findSortMap.put("sequence", "DESC");
+
+		this.setFindSortMap(findSortMap);
 	}
 
 	/**
-	 * getUpdatingData 和 setUpdatingData 其實可以不需要, 因為 super class 已經有了 存在的目的,
-	 * 只是為了讓 IDE 知道它的確切的type為何, 讓 jsf 的頁面比較好拖拉
+
+
+	 * 
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBean#getUpdatingData()
 	 *
 	 */
 	@Override
 	public CategoryVo getUpdatingData() {
-		return (CategoryVo)super.getUpdatingData();
+		return (CategoryVo) super.getUpdatingData();
 	}
-	
+
 	/**
-	 * 設定UpdatingData
+	 * Set UpdatingData
 	 * 
 	 */
 	@Override
@@ -168,26 +154,32 @@ public class CategoryManagedBean extends TemplatePrimeDataTableManagedBean
 		super.setUpdatingData(vo);
 	}
 
-    /**
-     * 取得Service物件
-     */
-    @Override
-    public CategoryService getService() {
+	/**
+	 * Get service
+	 */
+	@Override
+	public CategoryService getService() {
 
-        return this.service;
-    }
+		return this.service;
+	}
 
-    /**
-     * 設定該ManagedBean的主要service
-     * @param service
-     */
-    @Override
-    public void setService(CategoryService service) {
-        this.service = service;
-    }
+	/**
+	 * Set service
+	 * 
+	 * @param service
+	 */
+	@Override
+	public void setService(CategoryService service) {
+		this.service = service;
+	}
 
+	public CategoryJpaService getJpaService() {
+		return jpaService;
+	}
 
-
+	public void setJpaService(CategoryJpaService jpaService) {
+		this.jpaService = jpaService;
+	}
 
 	/**
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBean#setupUpdatingData()
@@ -196,19 +188,18 @@ public class CategoryManagedBean extends TemplatePrimeDataTableManagedBean
 	protected void setupUpdatingData() {
 
 	}
-	
+
 	/**
-	 * 假如Entity(Business Object)，有Many-to-One或Many-to-Many的狀況，
-	 * 則Code Generator會自動Override以供修改使用，可自行改成需要的Method，
-	 * 主要作用是在read頁面就Fetch所有相關關聯的資料，免得再update頁面出現問題
+	 * If entity has many-to-one or many-to-many relation then Code Generator will
+	 * make this method for modifying. You can modify it for your need Method. The
+	 * main function is in read page fetch all relational date to avoid update page
+	 * occur error.
+	 * 
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplateDataTableManagedBean#findAllData()
 	 */
 	@Override
 	protected List<Category> findAllData() {
 		return this.getService().findAllFetchRelation();
 	}
-	
-	
+
 }
-
-

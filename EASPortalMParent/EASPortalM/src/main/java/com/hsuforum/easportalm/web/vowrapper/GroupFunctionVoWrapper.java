@@ -8,7 +8,7 @@ import com.hsuforum.easportalm.web.vo.GroupFunctionVo;
  * The wrapper transfer GroupFunction to GroupFunctionVo
  * @author Marvin
  */
-public class GroupFunctionVoWrapper extends VoWrapperImpl<GroupFunction, com.hsuforum.easportalm.entity.GroupFunctionPK> {
+public class GroupFunctionVoWrapper extends VoWrapperImpl<GroupFunction, String> {
 
 	private static final long serialVersionUID = 1L;
 
