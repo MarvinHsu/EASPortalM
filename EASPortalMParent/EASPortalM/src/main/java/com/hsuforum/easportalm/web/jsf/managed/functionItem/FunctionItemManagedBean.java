@@ -71,7 +71,7 @@ public class FunctionItemManagedBean
 
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#initCreatingData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#initCreatingData()
 	 */
 	@Override
 	protected void initCreatingData() {
@@ -84,7 +84,7 @@ public class FunctionItemManagedBean
 
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#initUpdatingData(com.hsuforum.common.web.vo.ValueObject)
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#initUpdatingData(com.hsuforum.common.web.vo.ValueObject)
 	 */
 	@Override
 	protected void initUpdatingData(ValueObject<FunctionItem, java.lang.String> updatingData) {
@@ -99,7 +99,7 @@ public class FunctionItemManagedBean
 
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean#initFindCriteriaMap()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean#initFindCriteriaMap()
 	 */
 	@Override
 	protected void initFindCriteriaMap() {
@@ -124,7 +124,7 @@ public class FunctionItemManagedBean
 
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#getUpdatingData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#getUpdatingData()
 	 */
 	@Override
 	public FunctionItemVo getUpdatingData() {
@@ -133,7 +133,7 @@ public class FunctionItemManagedBean
 
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#setUpdatingData(com.hsuforum.common.web.vo.ValueObject)
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#setUpdatingData(com.hsuforum.common.web.vo.ValueObject)
 	 */
 	@Override
 	public void setUpdatingData(ValueObject<FunctionItem, java.lang.String> vo) {
@@ -142,7 +142,7 @@ public class FunctionItemManagedBean
 
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#getService()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#getService()
 	 */
 	public FunctionItemService getService() {
 
@@ -151,7 +151,7 @@ public class FunctionItemManagedBean
 
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#setService(com.hsuforum.common.service.BaseService)
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#setService(com.hsuforum.common.service.BaseService)
 	 */
 	public void setService(FunctionItemService service) {
 		this.service = service;
@@ -195,7 +195,7 @@ public class FunctionItemManagedBean
 	}
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#setupUpdatingData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#setupUpdatingData()
 	 */
 	@Override
 	protected void setupUpdatingData() {
@@ -205,7 +205,7 @@ public class FunctionItemManagedBean
 
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean#findAllData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean#findAllData()
 	 */
 	@Override
 	protected List<FunctionItem> findAllData() {

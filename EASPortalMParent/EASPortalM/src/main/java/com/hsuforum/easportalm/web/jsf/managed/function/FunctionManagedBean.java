@@ -94,7 +94,7 @@ public class FunctionManagedBean
 	/**
 	 * Init create object
 	 * 
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBean#initCreatingData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#initCreatingData()
 	 *
 	 */
 	@Override
@@ -139,7 +139,7 @@ public class FunctionManagedBean
 	/**
 	 * Init find criteria map, find oper map and find sort map
 	 * 
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplateDataTableManagedBean#initFindCriteriaMap()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean#initFindCriteriaMap()
 	 */
 	@Override
 	protected void initFindCriteriaMap() {
@@ -188,7 +188,7 @@ public class FunctionManagedBean
 
 
 	 * 
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBean#getUpdatingData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#getUpdatingData()
 	 *
 	 */
 	@Override
@@ -369,7 +369,7 @@ public class FunctionManagedBean
 	}
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBean#setupUpdatingData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#setupUpdatingData()
 	 */
 	@Override
 	protected void setupUpdatingData() {
@@ -384,7 +384,7 @@ public class FunctionManagedBean
 	 * main function is in read page fetch all relational date to avoid update page
 	 * occur error.
 	 * 
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplateDataTableManagedBean#findAllData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean#findAllData()
 	 */
 	@Override
 	protected List<Function> findAllData() {
