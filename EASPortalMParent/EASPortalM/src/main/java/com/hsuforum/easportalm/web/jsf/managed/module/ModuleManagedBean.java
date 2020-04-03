@@ -94,7 +94,7 @@ public class ModuleManagedBean extends TemplatePrimeJpaDataTableManagedBean<Modu
 	/**
 	 * Init create object
 	 * 
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBean#initCreatingData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#initCreatingData()
 	 *
 	 */
 	@Override
@@ -128,7 +128,7 @@ public class ModuleManagedBean extends TemplatePrimeJpaDataTableManagedBean<Modu
 	/**
 	 * Init find criteria map, find oper map and find sort map
 	 * 
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplateDataTableManagedBean#initFindCriteriaMap()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean#initFindCriteriaMap()
 	 */
 	@Override
 	protected void initFindCriteriaMap() {
@@ -161,7 +161,7 @@ public class ModuleManagedBean extends TemplatePrimeJpaDataTableManagedBean<Modu
 
 	/**
 	 * 
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBean#getUpdatingData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#getUpdatingData()
 	 *
 	 */
 	@Override
@@ -267,7 +267,7 @@ public class ModuleManagedBean extends TemplatePrimeJpaDataTableManagedBean<Modu
 	}
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBean#setupUpdatingData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#setupUpdatingData()
 	 */
 	@Override
 	protected void setupUpdatingData() {
@@ -281,7 +281,7 @@ public class ModuleManagedBean extends TemplatePrimeJpaDataTableManagedBean<Modu
 	 * main function is in read page fetch all relational date to avoid update page
 	 * occur error.
 	 * 
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplateDataTableManagedBean#findAllData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean#findAllData()
 	 */
 	@Override
 	protected List<Module> findAllData() {
