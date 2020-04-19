@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+	version="2.1">
+	<application>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+
+		<resource-bundle>
+			<base-name>applicationResources</base-name>
+			<var>resources</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>messages</base-name>
+			<var>messages</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>system</base-name>
+			<var>system</var>
+		</resource-bundle>
+		<locale-config>
+			<default-locale>zh_TW</default-locale>
+			<supported-locale>en</supported-locale>
+			<supported-locale>zh_CN</supported-locale>
+		</locale-config>
+	</application>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/kernel/default.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+
+		<navigation-case>
+			<from-outcome>index</from-outcome>
+			<to-view-id>/kernel/default.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>user</from-outcome>
+			<to-view-id>/kernel/user/readUser.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>group</from-outcome>
+			<to-view-id>/kernel/group/readGroup.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>function</from-outcome>
+			<to-view-id>/kernel/function/readFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>functionItem</from-outcome>
+			<to-view-id>/kernel/functionItem/readFunctionItem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>module</from-outcome>
+			<to-view-id>/kernel/module/readModule.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>groupFunction</from-outcome>
+			<to-view-id>/kernel/groupFunction/readGroupFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>category</from-outcome>
+			<to-view-id>/kernel/category/readCategory.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>system</from-outcome>
+			<to-view-id>/kernel/system/readSystem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>backOffice</from-outcome>
+			<to-view-id>/default.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+
+	</navigation-rule>
+
+	<!-- master FunctionItem begin -->
+	<navigation-rule>
+		<from-view-id>/kernel/functionItem/readFunctionItem.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>create</from-outcome>
+			<to-view-id>/kernel/functionItem/createFunctionItem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>update</from-outcome>
+			<to-view-id>/kernel/functionItem/updateFunctionItem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/functionItem/createFunctionItem.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/functionItem/readFunctionItem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/functionItem/updateFunctionItem.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/functionItem/readFunctionItem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<!-- master FunctionItem end crud begin [201603211953] master Function begin -->
+	<navigation-rule>
+		<from-view-id>/kernel/function/readFunction.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>create</from-outcome>
+			<to-view-id>/kernel/function/createFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>update</from-outcome>
+			<to-view-id>/kernel/function/updateFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/function/createFunction.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/function/readFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateFunctionItem</from-outcome>
+			<to-view-id>/kernel/function/functionItem/updateFunctionItem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>createFunctionItem</from-outcome>
+			<to-view-id>/kernel/function/functionItem/createFunctionItem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateGroupFunction</from-outcome>
+			<to-view-id>/kernel/function/groupFunction/updateGroupFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>createGroupFunction</from-outcome>
+			<to-view-id>/kernel/function/groupFunction/createGroupFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/function/updateFunction.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/function/readFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateFunctionItem</from-outcome>
+			<to-view-id>/kernel/function/functionItem/updateFunctionItem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>createFunctionItem</from-outcome>
+			<to-view-id>/kernel/function/functionItem/createFunctionItem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateGroupFunction</from-outcome>
+			<to-view-id>/kernel/function/groupFunction/updateGroupFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>createGroupFunction</from-outcome>
+			<to-view-id>/kernel/function/groupFunction/createGroupFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<!-- master Function end master Function , detail FunctionItem, begin -->
+	<navigation-rule>
+		<from-view-id>/kernel/function/functionItem/updateFunctionItem.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>readCreate</from-outcome>
+			<to-view-id>/kernel/function/createFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>readUpdate</from-outcome>
+			<to-view-id>/kernel/function/updateFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/function/functionItem/createFunctionItem.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>readCreate</from-outcome>
+			<to-view-id>/kernel/function/createFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>readUpdate</from-outcome>
+			<to-view-id>/kernel/function/updateFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<!-- master Function, detail FunctionItem, end master Function , detail 
+		GroupFunction, begin -->
+	<navigation-rule>
+		<from-view-id>/kernel/function/groupFunction/updateGroupFunction.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>readCreate</from-outcome>
+			<to-view-id>/kernel/function/createFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>readUpdate</from-outcome>
+			<to-view-id>/kernel/function/updateFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/function/groupFunction/createGroupFunction.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>readCreate</from-outcome>
+			<to-view-id>/kernel/function/createFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>readUpdate</from-outcome>
+			<to-view-id>/kernel/function/updateFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<!-- master Function, detail GroupFunction, end crud end [201603211953] 
+		crud begin [201603212001] master GroupFunction begin -->
+	<navigation-rule>
+		<from-view-id>/kernel/groupFunction/readGroupFunction.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>create</from-outcome>
+			<to-view-id>/kernel/groupFunction/createGroupFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>update</from-outcome>
+			<to-view-id>/kernel/groupFunction/updateGroupFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/groupFunction/createGroupFunction.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/groupFunction/readGroupFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/groupFunction/updateGroupFunction.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/groupFunction/readGroupFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<!-- master GroupFunction end crud end [201603212001] crud begin [201604050058] 
+		master User begin -->
+	<navigation-rule>
+		<from-view-id>/kernel/user/readUser.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>create</from-outcome>
+			<to-view-id>/kernel/user/createUser.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>update</from-outcome>
+			<to-view-id>/kernel/user/updateUser.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/user/createUser.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/user/readUser.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/user/updateUser.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/user/readUser.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<!-- master User end crud end [201604050058] crud begin [201603212044] master 
+		Group begin -->
+	<navigation-rule>
+		<from-view-id>/kernel/group/readGroup.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>create</from-outcome>
+			<to-view-id>/kernel/group/createGroup.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>update</from-outcome>
+			<to-view-id>/kernel/group/updateGroup.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/group/createGroup.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/group/readGroup.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateGroupFunction</from-outcome>
+			<to-view-id>/kernel/group/groupFunction/updateGroupFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>createGroupFunction</from-outcome>
+			<to-view-id>/kernel/group/groupFunction/createGroupFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/group/updateGroup.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/group/readGroup.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateGroupFunction</from-outcome>
+			<to-view-id>/kernel/group/groupFunction/updateGroupFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>createGroupFunction</from-outcome>
+			<to-view-id>/kernel/group/groupFunction/createGroupFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<!-- master Group end master Group , detail GroupFunction, begin -->
+	<navigation-rule>
+		<from-view-id>/kernel/group/groupFunction/updateGroupFunction.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>readCreate</from-outcome>
+			<to-view-id>/kernel/group/createGroup.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>readUpdate</from-outcome>
+			<to-view-id>/kernel/group/updateGroup.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/group/groupFunction/createGroupFunction.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>readCreate</from-outcome>
+			<to-view-id>/kernel/group/createGroup.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>readUpdate</from-outcome>
+			<to-view-id>/kernel/group/updateGroup.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- crud begin [201604051702] master Module begin -->
+	<navigation-rule>
+		<from-view-id>/kernel/module/readModule.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>create</from-outcome>
+			<to-view-id>/kernel/module/createModule.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>update</from-outcome>
+			<to-view-id>/kernel/module/updateModule.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/module/createModule.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/module/readModule.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateFunction</from-outcome>
+			<to-view-id>/kernel/module/function/updateFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>createFunction</from-outcome>
+			<to-view-id>/kernel/module/function/createFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/module/updateModule.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/module/readModule.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateFunction</from-outcome>
+			<to-view-id>/kernel/module/function/updateFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>createFunction</from-outcome>
+			<to-view-id>/kernel/module/function/createFunction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<!-- master Module end master Module , detail Function, begin -->
+	<navigation-rule>
+		<from-view-id>/kernel/module/function/updateFunction.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>readCreate</from-outcome>
+			<to-view-id>/kernel/module/createModule.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>readUpdate</from-outcome>
+			<to-view-id>/kernel/module/updateModule.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/kernel/module/function/createFunction.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>readCreate</from-outcome>
+			<to-view-id>/kernel/module/createModule.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>readUpdate</from-outcome>
+			<to-view-id>/kernel/module/updateModule.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/kernel/category/readCategory.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>create</from-outcome>
+			<to-view-id>/kernel/category/createCategory.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>update</from-outcome>
+			<to-view-id>/kernel/category/updateCategory.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/kernel/category/createCategory.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/category/readCategory.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/kernel/category/updateCategory.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/category/readCategory.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+
+	
+	<!-- master System begin -->
+	<navigation-rule>
+		<from-view-id>/kernel/system/readSystem.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>create</from-outcome>
+			<to-view-id>/kernel/system/createSystem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>update</from-outcome>
+			<to-view-id>/kernel/system/updateSystem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/kernel/system/createSystem.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/system/readSystem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/kernel/system/updateSystem.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>read</from-outcome>
+			<to-view-id>/kernel/system/readSystem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	
+	</navigation-rule>
+	<!-- master System end -->
+
+
+	<!-- codegen end -->
+</faces-config>
