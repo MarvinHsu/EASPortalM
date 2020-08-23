@@ -16,8 +16,8 @@ public class PortalClientTest {
 	PortalClient portalClient;
 	@Test
 	public void testFindUserById() {
-		portalClient.setPortalWSURI("https://localhost:8443/EASPortal/rest");;
-		String account="ADMIN";
+		portalClient.setPortalWSURI("http://localhost:8080/EASPortal/rest");;
+		String account="AS";
 		String systemCode="EASPortalM";
 		UserWSVO  userWSVO =portalClient.findUserById(systemCode, account);
 		
@@ -26,7 +26,7 @@ public class PortalClientTest {
 	
 	@Test
 	public void testFindModuleBySystem() {
-		portalClient.setPortalWSURI("https://localhost:8443/EASPortal/rest");;
+		portalClient.setPortalWSURI("http://localhost:8080/EASPortal/rest");;
 		String systemCode="EASPortalM";
 		ModuleWSVO2[] moduleWSVO2s =portalClient.findModuleBySystem(systemCode);
 		
