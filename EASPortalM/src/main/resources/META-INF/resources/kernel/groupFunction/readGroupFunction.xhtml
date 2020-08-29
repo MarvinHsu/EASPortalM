@@ -46,7 +46,7 @@
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						rows="#{defaultConfigManagedBean.rowsOfPerPage}"
 						rowsPerPageTemplate="#{defaultConfigManagedBean.rowsOfPerPage}"
-						value="#{groupFunctionManagedBean.dataModel}">
+						value="#{groupFunctionManagedBean.dataList}">
 
 						<p:column id="columnId" sortBy="#{bo.id}"
 							rendered="#{defaultConfigManagedBean.devMode}"
@@ -55,7 +55,7 @@
 							<h:outputText value="#{bo.id}"
 								rendered="#{!menuManagedBean.isGrant('groupFunction','update')}" />
 							<h:commandLink value="#{bo.id}"
-								action="#{groupFunctionManagedBean.doUpdateAction}"
+								action="#{groupFunctionManagedBean.doUpdateAction(bo)}"
 								rendered="#{menuManagedBean.isGrant('groupFunction','update')}" />
 
 						</p:column>
@@ -65,7 +65,7 @@
 							<h:outputText value="#{resources.update}"
 								rendered="#{!menuManagedBean.isGrant('groupFunction','update')}" />
 							<h:commandLink value="#{resources.update}"
-								action="#{groupFunctionManagedBean.doUpdateAction}"
+								action="#{groupFunctionManagedBean.doUpdateAction(bo)}"
 								rendered="#{menuManagedBean.isGrant('groupFunction','update')}" />
 
 						</p:column>

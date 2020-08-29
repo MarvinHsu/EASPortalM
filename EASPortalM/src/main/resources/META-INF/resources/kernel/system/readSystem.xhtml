@@ -72,7 +72,7 @@
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						rows="#{defaultConfigManagedBean.rowsOfPerPage}"
 						rowsPerPageTemplate="#{defaultConfigManagedBean.rowsOfPerPage}"
-						value="#{systemManagedBean.dataModel}">
+						value="#{systemManagedBean.dataList}">
 
 						<p:column id="columnId" sortBy="#{bo.id}" width="210"
 							rendered="#{defaultConfigManagedBean.devMode}"
@@ -81,7 +81,7 @@
 							<h:outputText value="#{bo.id}"
 								rendered="#{!menuManagedBean.isGrant('system','update')}" />
 							<h:commandLink value="#{bo.id}"
-								action="#{systemManagedBean.doUpdateAction}"
+								action="#{systemManagedBean.doUpdateAction(bo)}"
 								rendered="#{menuManagedBean.isGrant('system','update')}" />
 
 						</p:column>
@@ -92,7 +92,7 @@
 							<h:outputText value="#{bo.name}"
 								rendered="#{!menuManagedBean.isGrant('system','update')}" />
 							<h:commandLink value="#{bo.name}"
-								action="#{systemManagedBean.doUpdateAction}"
+								action="#{systemManagedBean.doUpdateAction(bo)}"
 								rendered="#{menuManagedBean.isGrant('system','update')}" />
 						</p:column>
 

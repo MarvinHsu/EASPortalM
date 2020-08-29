@@ -113,7 +113,7 @@ public class MenuManagedBean implements Serializable {
 
 		// Remove managed bean of session
 		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().getSessionMap().remove(obj+"ManagedBean");
+		context.getExternalContext().getSessionMap().remove("scopedTarget."+obj+"ManagedBean");
 
 	}
 
