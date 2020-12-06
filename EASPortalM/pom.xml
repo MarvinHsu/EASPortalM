@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hsuforum.EASPortalM</groupId>
 	<artifactId>EASPortalM</artifactId>
-	<version>2.3.6.RELEASE</version>
+	<version>2.0.3</version>
 	<packaging>jar</packaging>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -14,7 +14,7 @@
 	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<joinfaces.version>4.3.4</joinfaces.version>
+		<joinfaces.version>4.3.6</joinfaces.version>
 		<hsucommon.version>3.0.9</hsucommon.version>
 		<java.version>11</java.version>
 		<appRoot>/Application/EASPortalM</appRoot>
@@ -178,12 +178,10 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.5</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -463,7 +461,7 @@
 				<dependency>
 					<groupId>com.microsoft.sqlserver</groupId>
 					<artifactId>mssql-jdbc</artifactId>
-					<version>8.2.2.jre11</version>
+					<version>8.4.1.jre11</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -761,7 +759,7 @@
 				<dependency>
 					<groupId>com.microsoft.sqlserver</groupId>
 					<artifactId>mssql-jdbc</artifactId>
-					<version>8.2.2.jre11</version>
+					<version>8.4.1.jre11</version>
 				</dependency>
 			</dependencies>
 		</profile>
