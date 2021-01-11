@@ -1,17 +1,21 @@
 package com.hsuforum.easportalm.dao.test;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hsuforum.easportalm.dao.CategoryDao;
 import com.hsuforum.easportalm.entity.Category;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
+@Transactional("transactionManager")
 public class CategoryDaoTest {
 	
 	@Autowired
@@ -25,7 +29,7 @@ public class CategoryDaoTest {
 		testingObj.setId("Input pk");
 		dao.create(testingObj);
 		
-		Assert.assertNotEquals(testingObj.getId(), null);
+		assertNotEquals(testingObj.getId(), null);
 	}
 
 	@Test
@@ -33,7 +37,7 @@ public class CategoryDaoTest {
 	
 		Category testingObj = dao.findByPK("Input pk");
 		
-		Assert.assertEquals(testingObj.getId(),"Input pk");
+		assertEquals(testingObj.getId(),"Input pk");
 	}
 	
 	@Test
@@ -43,7 +47,7 @@ public class CategoryDaoTest {
 		testingObj.setName("test2");
 		dao.update(testingObj);
 		
-		Assert.assertEquals(testingObj.getName(), "test2");
+		assertEquals(testingObj.getName(), "test2");
 	}
 	
 	@Test
@@ -52,6 +56,6 @@ public class CategoryDaoTest {
 		Category testingObj = dao.findByPK("Input pk");	
 		dao.delete(testingObj);
 		Category testingObj2 = dao.findByPK("Input pk");
-		Assert.assertEquals(testingObj2, null);
+		assertEquals(testingObj2, null);
 	}	
 }

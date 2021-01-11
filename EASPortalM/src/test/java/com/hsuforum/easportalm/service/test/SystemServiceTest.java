@@ -1,17 +1,21 @@
 package com.hsuforum.easportalm.service.test;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hsuforum.easportalm.entity.System;
 import com.hsuforum.easportalm.service.SystemService;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
+@Transactional("transactionManager")
 public class SystemServiceTest {
 	
 	@Autowired
@@ -25,7 +29,7 @@ public class SystemServiceTest {
 		testingObj.setId("Input pk");
 		service.create(testingObj);
 		
-		Assert.assertNotEquals(testingObj.getId(), null);;
+		assertNotEquals(testingObj.getId(), null);;
 	}
 	
 	@Test
@@ -33,7 +37,7 @@ public class SystemServiceTest {
 	
 		System testingObj = service.findByPK("Input pk");
 		
-		Assert.assertEquals(testingObj.getId(),"Input pk");
+		assertEquals(testingObj.getId(),"Input pk");
 	}
 	
 	@Test
@@ -44,7 +48,7 @@ public class SystemServiceTest {
 		testingObj.setName("test2");
 		service.update(testingObj);
 		
-		Assert.assertEquals(testingObj.getName(), "test2");
+		assertEquals(testingObj.getName(), "test2");
 	}
 	
 	@Test
@@ -54,6 +58,6 @@ public class SystemServiceTest {
 		System testingObj = service.findByPK("Input pk");	
 		service.delete(testingObj);
 		System testingObj2 = service.findByPK("Input pk");
-		Assert.assertEquals(testingObj2, null);
+		assertEquals(testingObj2, null);
 	}	
 }
