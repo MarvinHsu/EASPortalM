@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
 import com.hsuforum.easportalm.entity.Function;
 import com.hsuforum.easportalm.entity.FunctionItem;
@@ -39,7 +39,7 @@ import com.hsuforum.easportalm.web.vowrapper.GroupVoWrapper;
 
 @Component
 @SessionScope
-public class GroupManagedBean extends TemplatePrimeJpaDataTableManagedBean<Group, String, GroupService, GroupJpaService> {
+public class GroupManagedBean extends TemplatePrimeDataTableManagedBean<Group, String, GroupService, GroupJpaService> {
 
 	private static final long serialVersionUID = 1096387523639795946L;
 

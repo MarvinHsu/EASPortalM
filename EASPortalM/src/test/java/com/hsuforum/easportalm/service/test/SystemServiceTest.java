@@ -22,17 +22,6 @@ public class SystemServiceTest {
 	SystemService service;
 	
 	@Test
-	public void testCreate() {
-		System testingObj = new System();
-
-		// TODO Input PK
-		testingObj.setId("Input pk");
-		service.create(testingObj);
-		
-		assertNotEquals(testingObj.getId(), null);;
-	}
-	
-	@Test
 	public void testRead() {
 	
 		System testingObj = service.findByPK("Input pk");
@@ -40,24 +29,5 @@ public class SystemServiceTest {
 		assertEquals(testingObj.getId(),"Input pk");
 	}
 	
-	@Test
-	public void testUpdate() {	
-		
-		// TODO update at least a field
-		System testingObj = service.findByPK("Input pk");
-		testingObj.setName("test2");
-		service.update(testingObj);
-		
-		assertEquals(testingObj.getName(), "test2");
-	}
 	
-	@Test
-	public void testDelete() {
-		
-		// TODO Input PK	
-		System testingObj = service.findByPK("Input pk");	
-		service.delete(testingObj);
-		System testingObj2 = service.findByPK("Input pk");
-		assertEquals(testingObj2, null);
-	}	
 }
