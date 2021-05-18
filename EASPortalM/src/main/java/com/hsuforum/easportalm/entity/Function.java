@@ -24,6 +24,10 @@ import com.hsuforum.common.entity.SystemDateOperation;
 import com.hsuforum.common.entity.impl.BaseEntityImpl;
 import com.hsuforum.common.entity.impl.SystemDateEntityListener;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 /**
  * The persistent class for the tbcl_functions database table.
  * 
@@ -33,126 +37,50 @@ import com.hsuforum.common.entity.impl.SystemDateEntityListener;
 @Table(name = "TB_FUNCTIONS")
 @EntityListeners({ SystemDateEntityListener.class })
 @NamedQuery(name = "Function.findAll", query = "SELECT f FROM Function f")
+@Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+@NoArgsConstructor
 public class Function extends BaseEntityImpl<String> implements SystemDateOperation {
 	private static final long serialVersionUID = 1L;
-	private String id;
-	private String code;
-	private Date createDate;
-	private String name;
-	private String outcome;
-	private Module module;
-	private Date updateDate;
-	private int sequence;
-	private Boolean showed;
-	private System system;
-	private Set<FunctionItem> functionItems;
-	private Set<GroupFunction> groupFunctions;
-
-	public Function() {
-	}
-
 	@Id
 	@Column(name = "ID", nullable = false)
-	public String getId() {
-		return this.id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
+	@EqualsAndHashCode.Include()
+	private String id;
 	@Basic()
 	@Column(name = "CODE", nullable = false)
-	public String getCode() {
-		return this.code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
+	private String code;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "CREATE_DATE")
-	public Date getCreateDate() {
-		return this.createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
+	private Date createDate;
 	@Basic()
 	@Column(name = "NAME", nullable = false)
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	private String name;
 	@Basic()
 	@Column(name = "OUTCOME")
-	public String getOutcome() {
-		return this.outcome;
-	}
-
-	public void setOutcome(String outcome) {
-		this.outcome = outcome;
-	}
-
+	private String outcome;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "UPDATE_DATE")
+	private Date updateDate;
 	@Basic()
 	@Column(name = "SEQUENCE")
-	public int getSequence() {
-		return sequence;
-	}
-
-	public void setSequence(int sequence) {
-		this.sequence = sequence;
-	}
-
+	private int sequence;
+	@Transient()
+	private Boolean showed;
 	// bi-directional many-to-one association to Module
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "TB_MODULES_ID")
-	public Module getModule() {
-		return this.module;
-	}
-
-	public void setModule(Module module) {
-		this.module = module;
-	}
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "UPDATE_DATE")
-	public Date getUpdateDate() {
-		return this.updateDate;
-	}
-
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
-	}
-
+	private Module module;
 	// bi-directional many-to-one association to Category
 	@ManyToOne
 	@JoinColumn(name = "TB_SYSTEMS_id")
-	public System getSystem() {
-		return this.system;
-	}
-
-	public void setSystem(System system) {
-		this.system = system;
-	}
-
+	private System system;
 	// bi-directional many-to-one association to FunctionItem
 	@OneToMany(mappedBy = "function", targetEntity = FunctionItem.class, cascade = {
 			CascadeType.ALL }, orphanRemoval = true)
-	public Set<FunctionItem> getFunctionItems() {
-		return this.functionItems;
-	}
-
-	public void setFunctionItems(Set<FunctionItem> functionItems) {
-		this.functionItems = functionItems;
-	}
+	private Set<FunctionItem> functionItems;
+	// bi-directional many-to-one association to GroupFunction
+	@OneToMany(mappedBy = "function", targetEntity = GroupFunction.class)
+	private Set<GroupFunction> groupFunctions;
 
 	public FunctionItem addFunctionItem(FunctionItem functionItem) {
 		if (getFunctionItems() == null) {
@@ -179,16 +107,6 @@ public class Function extends BaseEntityImpl<String> implements SystemDateOperat
 
 	}
 
-	// bi-directional many-to-one association to GroupFunction
-	@OneToMany(mappedBy = "function", targetEntity = GroupFunction.class)
-	public Set<GroupFunction> getGroupFunctions() {
-		return this.groupFunctions;
-	}
-
-	public void setGroupFunctions(Set<GroupFunction> groupFunctions) {
-		this.groupFunctions = groupFunctions;
-	}
-
 	public GroupFunction addGroupFunction(GroupFunction groupFunction) {
 		if (getGroupFunctions() == null) {
 			setGroupFunctions(new LinkedHashSet<GroupFunction>());
@@ -207,40 +125,6 @@ public class Function extends BaseEntityImpl<String> implements SystemDateOperat
 		groupFunction.setFunction(null);
 
 		return groupFunction;
-	}
-
-	@Transient()
-	public Boolean getShowed() {
-		return showed;
-	}
-
-	public void setShowed(Boolean showed) {
-		this.showed = showed;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Function other = (Function) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
 	}
 
 }
