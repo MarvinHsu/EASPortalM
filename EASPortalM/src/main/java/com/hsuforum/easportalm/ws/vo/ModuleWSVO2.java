@@ -1,7 +1,6 @@
 package com.hsuforum.easportalm.ws.vo;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Iterator;
 
 import com.hsuforum.easportalm.entity.Function;

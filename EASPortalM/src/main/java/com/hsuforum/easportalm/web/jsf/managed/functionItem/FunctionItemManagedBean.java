@@ -19,7 +19,6 @@ import com.hsuforum.easportalm.entity.Function;
 import com.hsuforum.easportalm.entity.FunctionItem;
 import com.hsuforum.easportalm.service.FunctionItemJpaService;
 import com.hsuforum.easportalm.service.FunctionItemService;
-import com.hsuforum.easportalm.service.FunctionJpaService;
 import com.hsuforum.easportalm.service.FunctionService;
 import com.hsuforum.easportalm.web.util.SelectHelper;
 import com.hsuforum.easportalm.web.vo.FunctionItemVo;
