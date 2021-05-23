@@ -22,17 +22,6 @@ public class CategoryServiceTest {
 	CategoryService service;
 	
 	@Test
-	public void testCreate() {
-		Category testingObj = new Category();
-
-		// TODO Input PK
-		testingObj.setId("Input pk");
-		service.create(testingObj);
-		
-		assertNotEquals(testingObj.getId(), null);;
-	}
-	
-	@Test
 	public void testRead() {
 	
 		Category testingObj = service.findByPK("Input pk");
@@ -40,24 +29,4 @@ public class CategoryServiceTest {
 		assertEquals(testingObj.getId(),"Input pk");
 	}
 	
-	@Test
-	public void testUpdate() {	
-		
-		// TODO update at least a field
-		Category testingObj = service.findByPK("Input pk");
-		testingObj.setName("test2");
-		service.update(testingObj);
-		
-		assertEquals(testingObj.getName(), "test2");
-	}
-	
-	@Test
-	public void testDelete() {
-		
-		// TODO Input PK	
-		Category testingObj = service.findByPK("Input pk");	
-		service.delete(testingObj);
-		Category testingObj2 = service.findByPK("Input pk");
-		assertEquals(testingObj2, null);
-	}	
 }

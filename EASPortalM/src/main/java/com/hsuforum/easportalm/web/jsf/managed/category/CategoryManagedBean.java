@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
 import com.hsuforum.easportalm.entity.Category;
 import com.hsuforum.easportalm.service.CategoryJpaService;
@@ -22,7 +22,7 @@ import com.hsuforum.easportalm.web.vowrapper.CategoryVoWrapper;
 @Component
 @SessionScope
 public class CategoryManagedBean
-		extends TemplatePrimeJpaDataTableManagedBean<Category, java.lang.String, CategoryService, CategoryJpaService> {
+		extends TemplatePrimeDataTableManagedBean<Category, java.lang.String, CategoryService, CategoryJpaService> {
 
 	private static final long serialVersionUID = 1L;
 

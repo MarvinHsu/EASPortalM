@@ -17,6 +17,7 @@ import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManage
 import com.hsuforum.common.web.vo.ValueObject;
 import com.hsuforum.easportalm.entity.Function;
 import com.hsuforum.easportalm.entity.FunctionItem;
+import com.hsuforum.easportalm.service.FunctionItemJpaService;
 import com.hsuforum.easportalm.service.FunctionItemService;
 import com.hsuforum.easportalm.service.FunctionService;
 import com.hsuforum.easportalm.web.util.SelectHelper;
@@ -26,7 +27,7 @@ import com.hsuforum.easportalm.web.vowrapper.FunctionItemVoWrapper;
 @Component
 @SessionScope
 public class FunctionItemManagedBean
-		extends TemplatePrimeDataTableManagedBean<FunctionItem, java.lang.String, FunctionItemService> {
+		extends TemplatePrimeDataTableManagedBean<FunctionItem, java.lang.String, FunctionItemService,FunctionItemJpaService> {
 
 	private static final long serialVersionUID = -3869631270660154620L;
 
@@ -35,7 +36,8 @@ public class FunctionItemManagedBean
 
 	@Autowired
 	private FunctionItemService service;
-
+	@Autowired
+	private FunctionItemJpaService jpaService;
 	@Autowired
 	private FunctionService functionService;
 	private List<SelectItem> functionList;
@@ -182,6 +184,14 @@ public class FunctionItemManagedBean
 
 	public void setFunctionService(FunctionService functionService) {
 		this.functionService = functionService;
+	}
+
+	public FunctionItemJpaService getJpaService() {
+		return jpaService;
+	}
+
+	public void setJpaService(FunctionItemJpaService jpaService) {
+		this.jpaService = jpaService;
 	}
 
 	private void setupFunction() {
