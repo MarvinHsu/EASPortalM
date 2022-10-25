@@ -70,12 +70,12 @@
 				<p:panel>
 					<p:dataTable id="dataTable" var="bo" paginator="true" scrollable="true" resizable="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rows="#{defaultConfigManagedBean.rowsOfPerPage}"
-						rowsPerPageTemplate="#{defaultConfigManagedBean.rowsOfPerPage}"
+						rows="#{defaultSetting.dataTableRows}"
+						rowsPerPageTemplate="#{defaultSetting.rowsOfPerPage}"
 						value="#{functionManagedBean.dataList}">
 
 						<p:column id="columnId" sortBy="#{bo.id}" width="210"
-							rendered="#{defaultConfigManagedBean.devMode}"
+							rendered="#{defaultSetting.devMode}"
 							headerText="#{resources.com_hsuforum_easportalm_entity_Function_id}">
 
 							<h:outputText value="#{bo.id}"
@@ -111,12 +111,17 @@
 
 							<h:outputLabel value="#{bo.sequence}" />
 						</p:column>
+						<p:column id="columnShowed" sortBy="#{bo.showed}"
+							headerText="#{resources.com_hsuforum_easportalm_entity_Function_showed}">
+
+							<h:outputLabel value="#{bo.showed}" />
+						</p:column>
 						<p:column id="columnCreateDate" sortBy="#{bo.createDate}"
 							headerText="#{resources.com_hsuforum_easportalm_entity_Function_createDate}">
 
 							<h:outputLabel value="#{bo.createDate}">
 								<f:convertDateTime type="date" pattern="yyyy/MM/dd"
-									timeZone="#{defaultConfigManagedBean.timeZone}" />
+									timeZone="#{defaultSetting.timeZone}" />
 							</h:outputLabel>
 						</p:column>
 						<p:column id="columnUpdateDate" sortBy="#{bo.updateDate}"
@@ -124,7 +129,7 @@
 
 							<h:outputLabel value="#{bo.updateDate}">
 								<f:convertDateTime type="date" pattern="yyyy/MM/dd"
-									timeZone="#{defaultConfigManagedBean.timeZone}" />
+									timeZone="#{defaultSetting.timeZone}" />
 							</h:outputLabel>
 						</p:column>
 

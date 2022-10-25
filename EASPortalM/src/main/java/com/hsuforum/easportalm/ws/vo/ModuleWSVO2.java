@@ -16,11 +16,10 @@ public class ModuleWSVO2 implements Serializable{
 	private String code;
 	private String name;
 	private int sequence;
-	
 	private FunctionWSVO2[] functionWSVO2s;
-	// is show the menu
+	// is show the module
 	private Boolean showed = false;
-	
+
 	public ModuleWSVO2(Module module){
 		super();
 		this.setId(module.getId());
@@ -38,4 +37,5 @@ public class ModuleWSVO2 implements Serializable{
 		}
 		this.setShowed(module.getShowed());
 	}
+	
 }

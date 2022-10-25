@@ -62,12 +62,12 @@
 				<p:panel>
 					<p:dataTable id="dataTable" var="bo" paginator="true" scrollable="true" resizable="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rows="#{defaultConfigManagedBean.rowsOfPerPage}"
-						rowsPerPageTemplate="#{defaultConfigManagedBean.rowsOfPerPage}"
+						rows="#{defaultSetting.dataTableRows}"
+						rowsPerPageTemplate="#{defaultSetting.rowsOfPerPage}"
 						value="#{userManagedBean.dataList}">
 
 						<p:column id="columnId" sortBy="#{bo.id}" width="210"
-							rendered="#{defaultConfigManagedBean.devMode}"
+							rendered="#{defaultSetting.devMode}"
 							headerText="#{resources.com_hsuforum_easportalm_entity_User_id}">
 
 							<h:outputText value="#{bo.id}"
@@ -113,7 +113,7 @@
 
 							<h:outputLabel value="#{bo.createDate}">
 								<f:convertDateTime type="date" pattern="yyyy/MM/dd"
-									timeZone="#{defaultConfigManagedBean.timeZone}" />
+									timeZone="#{defaultSetting.timeZone}" />
 							</h:outputLabel>
 						</p:column>
 						<p:column id="columnUpdateDate" sortBy="#{bo.updateDate}"
@@ -121,7 +121,7 @@
 
 							<h:outputLabel value="#{bo.updateDate}">
 								<f:convertDateTime type="date" pattern="yyyy/MM/dd"
-									timeZone="#{defaultConfigManagedBean.timeZone}" />
+									timeZone="#{defaultSetting.timeZone}" />
 							</h:outputLabel>
 						</p:column>
 

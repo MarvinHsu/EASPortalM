@@ -50,6 +50,8 @@ public class Module extends BaseEntityImpl<String> {
 	@Basic()
 	@Column(name = "SEQUENCE")
 	private int sequence;
+	@Column(name = "SHOWED")
+	private Boolean showed;
 	// bi-directional many-to-one association to Category
 	@ManyToOne
 	@JoinColumn(name = "TB_SYSTEMS_id")
@@ -58,9 +60,6 @@ public class Module extends BaseEntityImpl<String> {
 	@OneToMany(mappedBy = "module", targetEntity = Function.class, cascade = { CascadeType.ALL })
 	@OrderBy("sequence ASC")
 	private Set<Function> functions;
-	@Transient()
-	// is show the module
-	private Boolean showed = false;
 
 	public Function addFunction(Function function) {
 		if (getFunctions() == null) {

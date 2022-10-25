@@ -20,7 +20,7 @@ public class FunctionWSVO implements Serializable{
 	private Date updateDate;
 	private int sequence;
 	private Boolean showed;
-		
+	
 	public FunctionWSVO(Function function) {
 		super();
 		this.setId(function.getId());
@@ -40,5 +40,4 @@ public class FunctionWSVO implements Serializable{
 		this.setShowed(function.getShowed());
 	}
 
-	
 }

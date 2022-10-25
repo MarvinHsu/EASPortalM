@@ -13,7 +13,7 @@ public class ModuleWSVO implements Serializable{
 	private String id;
 	private String code;
 	private String name;
-	private int sequence;
+	private int sequence;	
 	// is show the module
 	private Boolean showed = false;
 	

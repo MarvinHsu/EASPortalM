@@ -70,12 +70,12 @@
 				<p:panel>
 					<p:dataTable id="dataTable" var="bo" paginator="true" scrollable="true" resizable="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rows="#{defaultConfigManagedBean.rowsOfPerPage}"
-						rowsPerPageTemplate="#{defaultConfigManagedBean.rowsOfPerPage}"
+						rows="#{defaultSetting.dataTableRows}"
+						rowsPerPageTemplate="#{defaultSetting.rowsOfPerPage}"
 						value="#{systemManagedBean.dataList}">
 
 						<p:column id="columnId" sortBy="#{bo.id}" width="210"
-							rendered="#{defaultConfigManagedBean.devMode}"
+							rendered="#{defaultSetting.devMode}"
 							headerText="#{resources.com_hsuforum_easportalm_entity_System_id}">
 
 							<h:outputText value="#{bo.id}"

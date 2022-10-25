@@ -19,6 +19,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
 import com.hsuforum.common.web.jsf.utils.JSFUtils;
+import com.hsuforum.easportalm.DefaultSetting;
+import com.hsuforum.easportalm.security.util.AAUtils;
 import com.hsuforum.easportalm.web.config.DefaultConfigManagedBean;
 import com.hsuforum.easportalm.ws.client.PortalClient;
 import com.hsuforum.easportalm.ws.vo.FunctionWSVO2;
@@ -37,13 +39,10 @@ public class MenuManagedBean implements Serializable {
 	private static final long serialVersionUID = 7319288785728714429L;
 
 	@Autowired
-	private DefaultConfigManagedBean defaultConfigManagedBean;
-
+	private DefaultSetting defaultSetting;
 	@Autowired
 	private PortalClient portalClient;
 
-	@Autowired
-	private String systemId;
 	private UserWSVO userWSVO;
 	private List<ModuleWSVO2> moduleWSVO2s;
 
@@ -56,55 +55,59 @@ public class MenuManagedBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-
 		// get user id
-        AttributePrincipal principal = (AttributePrincipal)JSFUtils.getHttpServletRequest().getUserPrincipal();        
-        Map attributes = principal.getAttributes();
-        String userId=(String)attributes.get("sAMAccountName");
-		//this.userId = JSFUtils.getHttpServletRequest().getRemoteUser();
-        logger.info("login portalm user id ="+userId); 
-		
-		this.userWSVO = this.getPortalClient().findUserById(this.getSystemId(), userId.toUpperCase());
-
-		ModuleWSVO2[] moduleArray = this.getPortalClient().findModuleBySystem(this.getSystemId());
-
-		this.moduleWSVO2s = new ArrayList<ModuleWSVO2>();
-		if(moduleArray!=null){
-			for (int j = 0; j < moduleArray.length; j++) {
-				this.moduleWSVO2s.add(moduleArray[j]);
-			}
+        //AttributePrincipal principal = (AttributePrincipal)JSFUtils.getHttpServletRequest().getUserPrincipal();        
+       // Map attributes = principal.getAttributes();
+        //String userId=(String)attributes.get("sAMAccountName");
+        Object principal=AAUtils.getLoggedInUser();
+        if(principal instanceof UserWSVO) {
+			//this.userId = JSFUtils.getHttpServletRequest().getRemoteUser();
+        	UserWSVO userWSVO=(UserWSVO)principal;
+	        logger.info("login java_jsf_tempate userWSVO ="+userWSVO);
+	        
+			this.userWSVO = this.getPortalClient().findUserById(this.getDefaultSetting().getSystemId(), userWSVO.getAccount().toUpperCase());
+			ModuleWSVO2[] moduleArray = this.getPortalClient().findModuleBySystem(this.getDefaultSetting().getSystemId());
 	
-			if (this.moduleWSVO2s.size() > 0) {
-				this.activeTab = 0;
-			}
-			if (this.userWSVO != null && userWSVO.getGroupWSVOs() != null) {
-				for (GroupWSVO groupWSVO : userWSVO.getGroupWSVOs()) {
+			this.moduleWSVO2s = new ArrayList<ModuleWSVO2>();
+			if (moduleArray != null) {
+				for (int j = 0; j < moduleArray.length; j++) {
+					this.moduleWSVO2s.add(moduleArray[j]);
+				}
 	
-					for (GroupFunctionWSVO groupFunctionWSVO : groupWSVO.getGroupFunctionWSVOs()) {
-						for (int i = 0; i < this.moduleWSVO2s.size(); i++) {
-							if (groupFunctionWSVO.getFunctionWSVO().getModuleWSVO() != null
-									&& groupFunctionWSVO.getFunctionWSVO().getModuleWSVO().getCode()
-											.equals(this.moduleWSVO2s.get(i).getCode())) {
-								this.moduleWSVO2s.get(i).setShowed(true);
-								FunctionWSVO2[] iter = this.moduleWSVO2s.get(i).getFunctionWSVO2s();
-								FunctionWSVO2[] functionWSVO2s = new FunctionWSVO2[iter.length];
-								for (int j = 0; j < iter.length; j++) {
-									FunctionWSVO2 functionWSVO2 = iter[j];
-									if (groupFunctionWSVO.getFunctionWSVO().getCode().equals(functionWSVO2.getCode())) {
-										functionWSVO2.setShowed(true);
+				if (this.moduleWSVO2s.size() > 0) {
+					this.activeTab = 0;
+				}
+				if (this.userWSVO != null && userWSVO.getGroupWSVOs() != null) {
+					
+					for (GroupWSVO groupWSVO : userWSVO.getGroupWSVOs()) {
+	
+						for (GroupFunctionWSVO groupFunctionWSVO : groupWSVO.getGroupFunctionWSVOs()) {
+							for (int i = 0; i < this.moduleWSVO2s.size(); i++) {
+								if (groupFunctionWSVO.getFunctionWSVO().getModuleWSVO() != null
+										&& groupFunctionWSVO.getFunctionWSVO().getModuleWSVO().getCode()
+												.equals(this.moduleWSVO2s.get(i).getCode())) {
+									this.moduleWSVO2s.get(i).setShowed(true);
+									FunctionWSVO2[] iter = this.moduleWSVO2s.get(i).getFunctionWSVO2s();
+									FunctionWSVO2[] functionWSVO2s = new FunctionWSVO2[iter.length];
+									for (int j = 0; j < iter.length; j++) {
+										FunctionWSVO2 functionWSVO2 = iter[j];
+										if (groupFunctionWSVO.getFunctionWSVO().getCode().equals(functionWSVO2.getCode())) {
+											functionWSVO2.setShowed(true);
+										}
+										functionWSVO2s[j] = functionWSVO2;
 									}
-									functionWSVO2s[j] = functionWSVO2;
+									this.moduleWSVO2s.get(i).setFunctionWSVO2s(functionWSVO2s);
+	
 								}
-								this.moduleWSVO2s.get(i).setFunctionWSVO2s(functionWSVO2s);
 	
 							}
-	
 						}
 					}
 				}
 			}
-		}
-
+        }else {
+        	logger.info("login java_jsf_tempate principal ="+principal);
+        }
 	}
 
 	public void navigationListener(ActionEvent event) throws Exception {
@@ -119,7 +122,7 @@ public class MenuManagedBean implements Serializable {
 
 	public boolean isGrant(String functionCode, String itemCode) {
 
-		if (this.getDefaultConfigManagedBean().getDevMode() == true) {
+		if (this.getDefaultSetting().getDevMode() == true) {
 			return true;
 		}
 		if (this.getUserWSVO() != null && this.getUserWSVO().getGroupWSVOs() != null) {
@@ -150,7 +153,6 @@ public class MenuManagedBean implements Serializable {
 		this.activeTab = activeTab;
 	}
 
-
 	public UserWSVO getUserWSVO() {
 		return userWSVO;
 	}
@@ -159,9 +161,9 @@ public class MenuManagedBean implements Serializable {
 		this.userWSVO = userWSVO;
 	}
 
-
-
 	public List<ModuleWSVO2> getModuleWSVO2s() {
+
+		
 		return moduleWSVO2s;
 	}
 
@@ -169,13 +171,6 @@ public class MenuManagedBean implements Serializable {
 		this.moduleWSVO2s = moduleWSVO2s;
 	}
 
-	public DefaultConfigManagedBean getDefaultConfigManagedBean() {
-		return defaultConfigManagedBean;
-	}
-
-	public void setDefaultConfigManagedBean(DefaultConfigManagedBean defaultConfigManagedBean) {
-		this.defaultConfigManagedBean = defaultConfigManagedBean;
-	}
 
 	public PortalClient getPortalClient() {
 		return portalClient;
@@ -185,12 +180,11 @@ public class MenuManagedBean implements Serializable {
 		this.portalClient = portalClient;
 	}
 
-	public String getSystemId() {
-		return systemId;
+	public DefaultSetting getDefaultSetting() {
+		return defaultSetting;
 	}
 
-	public void setSystemId(String systemId) {
-		this.systemId = systemId;
+	public void setDefaultSetting(DefaultSetting defaultSetting) {
+		this.defaultSetting = defaultSetting;
 	}
-
 }
