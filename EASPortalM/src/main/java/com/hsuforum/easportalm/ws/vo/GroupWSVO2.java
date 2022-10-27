@@ -1,14 +1,10 @@
 package com.hsuforum.easportalm.ws.vo;
 
 import java.io.Serializable;
-import java.util.Iterator;
-
-import javax.persistence.Transient;
 
 import org.springframework.security.core.GrantedAuthority;
 
 import com.hsuforum.easportalm.entity.Group;
-import com.hsuforum.easportalm.entity.GroupFunction;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -9,7 +9,6 @@ import java.util.Map;
 import javax.persistence.EntityManagerFactory;
 import javax.servlet.http.HttpSessionEvent;
 
-import org.jasig.cas.client.boot.configuration.EnableCasClient;
 import org.jasig.cas.client.session.SingleSignOutFilter;
 import org.jasig.cas.client.session.SingleSignOutHttpSessionListener;
 import org.jasig.cas.client.validation.Cas30ProxyTicketValidator;
@@ -56,7 +55,6 @@ import org.springframework.transaction.interceptor.RuleBasedTransactionAttribute
 import org.springframework.transaction.interceptor.TransactionAttribute;
 import org.springframework.transaction.interceptor.TransactionInterceptor;
 
-import com.hsuforum.easportalm.DefaultSetting;
 import com.hsuforum.easportalm.security.intercept.web.PortalFilterInvocationDefinitionSource;
 import com.hsuforum.easportalm.security.userdetails.PortalUserDetailsService;
 import com.hsuforum.easportalm.security.vote.UserVoter;
