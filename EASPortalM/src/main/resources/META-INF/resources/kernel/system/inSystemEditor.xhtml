@@ -38,7 +38,10 @@
 			required="true">
 			<f:convertNumber maxFractionDigits="0" minFractionDigits="0" />
 		</p:inputText>
-
+		<h:outputText value="#{resources.com_hsuforum_easportalm_entity_System_showed}" />
+		<p:selectBooleanCheckbox id="checkboxShowed"
+			value="#{systemManagedBean.updatingData.entity.showed}"
+			label="#{resources.com_hsuforum_easportalm_entity_System_showed}"/>
 
 		<h:outputText
 			value="#{resources.com_hsuforum_easportalm_entity_System_url}" />

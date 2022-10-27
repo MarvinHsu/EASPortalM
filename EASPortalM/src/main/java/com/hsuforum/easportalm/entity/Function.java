@@ -18,7 +18,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 import com.hsuforum.common.entity.SystemDateOperation;
 import com.hsuforum.common.entity.impl.BaseEntityImpl;
@@ -64,7 +63,7 @@ public class Function extends BaseEntityImpl<String> implements SystemDateOperat
 	@Basic()
 	@Column(name = "SEQUENCE")
 	private int sequence;
-	@Transient()
+	@Column(name = "SHOWED")
 	private Boolean showed;
 	// bi-directional many-to-one association to Module
 	@ManyToOne(fetch = FetchType.LAZY)

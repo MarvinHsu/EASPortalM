@@ -13,7 +13,8 @@ public class GroupFunctionWSVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private FunctionWSVO functionWSVO;
 	private FunctionItemWSVO functionItemWSVO;
-
+	private GroupWSVO2 groupWSVO2;
+	
 	public GroupFunctionWSVO(GroupFunction groupFunction) {
 		super();
 		if(groupFunction.getFunctionItem()!=null){
@@ -22,6 +23,9 @@ public class GroupFunctionWSVO implements Serializable {
 		if(groupFunction.getFunction()!=null){
 			this.setFunctionWSVO(new FunctionWSVO(groupFunction.getFunction()));
 		}
-		
+		if(groupFunction.getGroup()!=null){
+			this.setGroupWSVO2(new GroupWSVO2(groupFunction.getGroup()));
+		}
 	}
+	
 }

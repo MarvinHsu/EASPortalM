@@ -45,6 +45,9 @@ public class System extends BaseEntityImpl<String> {
 	@Column(name = "SEQUENCE")
 	private int sequence;
 	@Basic()
+	@Column(name = "SHOWED")
+	private Boolean showed;
+	@Basic()
 	@Column(name = "URL")
 	private String url;
 	@Basic()

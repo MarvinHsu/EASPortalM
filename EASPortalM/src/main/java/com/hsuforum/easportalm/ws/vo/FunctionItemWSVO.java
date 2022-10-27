@@ -15,13 +15,14 @@ public class FunctionItemWSVO implements Serializable{
 	private String code;
 	private String name;
 	private String url;
-		
+	
+
+	
 	public FunctionItemWSVO(FunctionItem functionItem) {
 		super();
 		this.setId(functionItem.getId());
 		this.setCode(functionItem.getCode());
 		this.setName(functionItem.getName());
 		this.setUrl(functionItem.getUrl());
-	}
-
+	}	
 }

@@ -28,7 +28,15 @@
 			label="#{resources.com_hsuforum_easportalm_entity_Module_code}"
 			required="true" />
 
-
+		<h:outputText
+			value="#{resources.com_hsuforum_easportalm_entity_Module_system}" />
+		<p:selectOneMenu id="selectSystemId" disabled="#{moduleManagedBean.disabledSystem}"
+			value="#{moduleManagedBean.updatingData.selectSystemId}"
+			label="#{resources.com_hsuforum_easportalm_entity_Module_system}"
+			required="true">
+			<f:selectItems value="#{moduleManagedBean.systemList}" />
+		</p:selectOneMenu>
+		
 		<h:outputText
 			value="#{resources.com_hsuforum_easportalm_entity_Module_sequence}" />
 		<p:inputText id="inputTextSequence"
@@ -38,16 +46,11 @@
 			required="true">
 			<f:convertNumber maxFractionDigits="0" minFractionDigits="0" />
 		</p:inputText>
-
-		<h:outputText
-			value="#{resources.com_hsuforum_easportalm_entity_Module_system}" />
-		<p:selectOneMenu id="selectSystemId" disabled="#{moduleManagedBean.disabledSystem}"
-			value="#{moduleManagedBean.updatingData.selectSystemId}"
-			label="#{resources.com_hsuforum_easportalm_entity_Module_system}"
-			required="true">
-			<f:selectItems value="#{moduleManagedBean.systemList}" />
-		</p:selectOneMenu>
-
+		
+		<h:outputText value="#{resources.com_hsuforum_easportalm_entity_Module_showed}" />
+		<p:selectBooleanCheckbox id="checkboxShowed"
+			value="#{moduleManagedBean.updatingData.entity.showed}"
+			label="#{resources.com_hsuforum_easportalm_entity_Module_showed}"/>
 
 	</p:panelGrid>
 </p:panel>
