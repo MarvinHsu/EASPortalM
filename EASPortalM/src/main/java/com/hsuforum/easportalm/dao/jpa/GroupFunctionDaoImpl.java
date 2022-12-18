@@ -2,8 +2,8 @@ package com.hsuforum.easportalm.dao.jpa;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
@@ -29,7 +29,7 @@ public class GroupFunctionDaoImpl extends BaseDaoImpl<GroupFunction, String>
 	}
 
 	/**
-	 * @see com.hsuforum.common.dao.jpa.BaseDaoImpl#setEntityManager(javax.persistence.EntityManager)
+	 * @see com.hsuforum.common.dao.jpa.BaseDaoImpl#setEntityManager(jakarta.persistence.EntityManager)
 	 */
 	@Override
 	public void setEntityManager(EntityManager entityManager) {

@@ -6,12 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.EntityManagerFactory;
-import javax.servlet.http.HttpSessionEvent;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.servlet.http.HttpSessionEvent;
 
-import org.jasig.cas.client.session.SingleSignOutFilter;
-import org.jasig.cas.client.session.SingleSignOutHttpSessionListener;
-import org.jasig.cas.client.validation.Cas30ProxyTicketValidator;
+import org.apereo.cas.client.boot.configuration.EnableCasClient;
+import org.apereo.cas.client.session.SingleSignOutFilter;
+import org.apereo.cas.client.session.SingleSignOutHttpSessionListener;
+import org.apereo.cas.client.validation.Cas30ProxyTicketValidator;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
@@ -19,6 +20,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.event.EventListener;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.security.access.AccessDecisionVoter;
@@ -61,7 +63,7 @@ import com.hsuforum.easportalm.security.vote.UserVoter;
 import com.hsuforum.easportalm.ws.client.PortalClient;
 
 
-//@EnableCasClient
+@EnableCasClient
 @Configuration
 @ImportResource(value = { "classpath*:ScheduleContext.xml",
 		"classpath*:WebContext.xml", "classpath*:ServiceContext.xml", "classpath*:DaoContext.xml",
@@ -176,6 +178,7 @@ public class ProjectConfiguration {
         return casAuthenticationProvider;
     }
 	@Bean
+	@Primary
 	public CasAuthenticationFilter casAuthenticationFilter(
 		AuthenticationManager authenticationManager,
 	    ServiceProperties serviceProperties) throws Exception {
