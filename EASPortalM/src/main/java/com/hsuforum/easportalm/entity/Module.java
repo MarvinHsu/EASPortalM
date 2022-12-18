@@ -3,6 +3,8 @@ package com.hsuforum.easportalm.entity;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import com.hsuforum.common.entity.impl.BaseEntityImpl;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -15,9 +17,6 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
-
-import com.hsuforum.common.entity.impl.BaseEntityImpl;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

@@ -4,15 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
-
 import org.springframework.stereotype.Repository;
 
 import com.hsuforum.common.dao.jpa.BaseDaoImpl;
 import com.hsuforum.easportalm.dao.UserDao;
 import com.hsuforum.easportalm.entity.User;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 
 /**
  * User Data Access Object Implement

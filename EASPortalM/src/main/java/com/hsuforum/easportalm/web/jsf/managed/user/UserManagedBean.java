@@ -8,8 +8,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import jakarta.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
@@ -23,6 +21,8 @@ import com.hsuforum.easportalm.service.UserJpaService;
 import com.hsuforum.easportalm.service.UserService;
 import com.hsuforum.easportalm.web.vo.UserVo;
 import com.hsuforum.easportalm.web.vowrapper.UserVoWrapper;
+
+import jakarta.annotation.PostConstruct;
 
 @Component
 @SessionScope

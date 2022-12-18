@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-
 import org.springframework.stereotype.Repository;
 
 import com.hsuforum.common.dao.jpa.BaseDaoImpl;
 import com.hsuforum.easportalm.dao.GroupDao;
 import com.hsuforum.easportalm.entity.Group;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 /**
  * Group Data Access Object Implement

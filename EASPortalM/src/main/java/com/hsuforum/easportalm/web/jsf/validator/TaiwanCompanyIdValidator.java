@@ -2,15 +2,15 @@ package com.hsuforum.easportalm.web.jsf.validator;
 
 import java.util.regex.Pattern;
 
+import com.hsuforum.common.web.util.MessageUtils;
+import com.hsuforum.easportalm.common.ErrorCode;
+
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.component.UIComponent;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.validator.FacesValidator;
 import jakarta.faces.validator.Validator;
 import jakarta.faces.validator.ValidatorException;
-
-import com.hsuforum.common.web.util.MessageUtils;
-import com.hsuforum.easportalm.common.ErrorCode;
 /**
  * Taiwan company id validator
  * @author Marvin

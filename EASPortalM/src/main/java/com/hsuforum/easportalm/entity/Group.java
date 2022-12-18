@@ -3,6 +3,10 @@ package com.hsuforum.easportalm.entity;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.springframework.security.core.GrantedAuthority;
+
+import com.hsuforum.common.entity.impl.BaseEntityImpl;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,11 +19,6 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import org.springframework.security.core.GrantedAuthority;
-
-import com.hsuforum.common.entity.impl.BaseEntityImpl;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

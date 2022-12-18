@@ -6,9 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.servlet.http.HttpSessionEvent;
-
 import org.apereo.cas.client.boot.configuration.EnableCasClient;
 import org.apereo.cas.client.session.SingleSignOutFilter;
 import org.apereo.cas.client.session.SingleSignOutHttpSessionListener;
@@ -61,6 +58,9 @@ import com.hsuforum.easportalm.security.intercept.web.PortalFilterInvocationDefi
 import com.hsuforum.easportalm.security.userdetails.PortalUserDetailsService;
 import com.hsuforum.easportalm.security.vote.UserVoter;
 import com.hsuforum.easportalm.ws.client.PortalClient;
+
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.servlet.http.HttpSessionEvent;
 
 
 @EnableCasClient
