@@ -3,24 +3,22 @@ package com.hsuforum.easportalm.entity;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import org.springframework.security.core.GrantedAuthority;
 
 import com.hsuforum.common.entity.impl.BaseEntityImpl;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -29,7 +27,6 @@ import lombok.NoArgsConstructor;
  * The persistent class for the TBSSO_GROUPS database table.
  * 
  */
-@XmlRootElement
 @Entity
 @Table(name = "TB_GROUPS")
 @NamedQueries({ @NamedQuery(name = "Group.findAll", query = "SELECT t FROM Group t"),

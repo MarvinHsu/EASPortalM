@@ -2,14 +2,14 @@ package com.hsuforum.easportalm.dao.jpa;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.springframework.stereotype.Repository;
 
 import com.hsuforum.common.dao.jpa.BaseDaoImpl;
 import com.hsuforum.easportalm.dao.FunctionItemDao;
 import com.hsuforum.easportalm.entity.FunctionItem;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 @Repository("functionItemDao")
 public class FunctionItemDaoImpl extends BaseDaoImpl<FunctionItem, java.lang.String> implements FunctionItemDao {
@@ -27,7 +27,7 @@ public class FunctionItemDaoImpl extends BaseDaoImpl<FunctionItem, java.lang.Str
 	}
 
 	/**
-	 * @see com.hsuforum.common.dao.jpa.BaseDaoImpl#setEntityManager(javax.persistence.EntityManager)
+	 * @see com.hsuforum.common.dao.jpa.BaseDaoImpl#setEntityManager(jakarta.persistence.EntityManager)
 	 */
 	@Override
 	public void setEntityManager(EntityManager entityManager) {

@@ -2,14 +2,14 @@ package com.hsuforum.easportalm.dao.jpa;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.springframework.stereotype.Repository;
 
 import com.hsuforum.common.dao.jpa.BaseDaoImpl;
 import com.hsuforum.easportalm.dao.SystemDao;
 import com.hsuforum.easportalm.entity.System;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 @Repository("systemDao")
 public class SystemDaoImpl extends BaseDaoImpl<System, java.lang.String>

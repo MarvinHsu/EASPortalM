@@ -6,9 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.annotation.PostConstruct;
-import javax.faces.model.SelectItem;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
@@ -23,6 +20,9 @@ import com.hsuforum.easportalm.service.FunctionService;
 import com.hsuforum.easportalm.web.util.SelectHelper;
 import com.hsuforum.easportalm.web.vo.FunctionItemVo;
 import com.hsuforum.easportalm.web.vowrapper.FunctionItemVoWrapper;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.faces.model.SelectItem;
 
 @Component
 @SessionScope

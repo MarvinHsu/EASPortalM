@@ -2,13 +2,13 @@ package com.hsuforum.easportalm.web.config;
 
 import java.io.Serializable;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.ApplicationScope;
 
 import com.hsuforum.common.web.jsf.utils.JSFUtils;
+
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Default configuration managed bean
