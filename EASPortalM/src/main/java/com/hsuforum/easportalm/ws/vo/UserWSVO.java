@@ -1,6 +1,5 @@
 package com.hsuforum.easportalm.ws.vo;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -16,7 +15,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
-public class UserWSVO implements Serializable,UserDetails{
+public class UserWSVO implements UserDetails{
 	private static final long serialVersionUID = 1L;
 	private String id;
 	private String account;
