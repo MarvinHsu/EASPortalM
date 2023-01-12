@@ -17,7 +17,7 @@
 		<joinfaces.version>5.0.1</joinfaces.version>
 		<hsucommon.version>4.0.1</hsucommon.version>
 		<java.version>17</java.version>
-		<appRoot>/Users/weiche/Application/EASPortalM</appRoot>
+		<appRoot>/Application/EASPortalM</appRoot>
 		<systemUrl>https://localhost:7443</systemUrl>
 		<ssoUrl>https://localhost:9443/cas</ssoUrl>
 		<portalWSURI>https://localhost:8443/EASPortal/rest</portalWSURI>
