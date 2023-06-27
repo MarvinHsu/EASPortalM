@@ -4,18 +4,18 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hsuforum.EASPortalM</groupId>
 	<artifactId>EASPortalM</artifactId>
-	<version>3.0.2</version>
+	<version>3.0.3</version>
 	<packaging>jar</packaging>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.0</version>
+		<version>3.1.1</version>
 		<relativePath />
 	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<joinfaces.version>5.1.0</joinfaces.version>
-		<hsucommon.version>4.0.2</hsucommon.version>
+		<joinfaces.version>5.1.1</joinfaces.version>
+		<hsucommon.version>4.0.3</hsucommon.version>
 		<java.version>17</java.version>
 		<appRoot>/Application/EASPortalM</appRoot>
 		<systemUrl>https://localhost:7443</systemUrl>
@@ -541,7 +541,7 @@
 				<dependency>
 					<groupId>org.glassfish</groupId>
 					<artifactId>jakarta.el</artifactId>
-					<version>3.0.2</version>
+					<version>3.0.3</version>
 				</dependency>
 				<dependency>
 					<groupId>com.ibm.db2</groupId>
@@ -600,7 +600,7 @@
 				<dependency>
 					<groupId>org.glassfish</groupId>
 					<artifactId>jakarta.el</artifactId>
-					<version>3.0.2</version>
+					<version>3.0.3</version>
 				</dependency>
 				<dependency>
 					<groupId>mysql</groupId>
@@ -659,7 +659,7 @@
 				<dependency>
 					<groupId>org.glassfish</groupId>
 					<artifactId>jakarta.el</artifactId>
-					<version>3.0.2</version>
+					<version>3.0.3</version>
 				</dependency>
 				<dependency>
 					<groupId>com.oracle.jdbc</groupId>
@@ -719,7 +719,7 @@
 				<dependency>
 					<groupId>org.glassfish</groupId>
 					<artifactId>jakarta.el</artifactId>
-					<version>3.0.2</version>
+					<version>3.0.3</version>
 				</dependency>
 				<dependency>
 					<groupId>org.postgresql</groupId>
@@ -779,7 +779,7 @@
 				<dependency>
 					<groupId>org.glassfish</groupId>
 					<artifactId>jakarta.el</artifactId>
-					<version>3.0.2</version>
+					<version>3.0.3</version>
 				</dependency>
 				<dependency>
 					<groupId>com.microsoft.sqlserver</groupId>
