@@ -65,9 +65,7 @@ import jakarta.servlet.http.HttpSessionEvent;
 
 @EnableCasClient
 @Configuration
-@ImportResource(value = { "classpath*:ScheduleContext.xml",
-		"classpath*:WebContext.xml", "classpath*:ServiceContext.xml", "classpath*:DaoContext.xml",
-		"classpath*:DBContext.xml" })
+@ImportResource(value = { "classpath*:WebContext.xml" })
 public class ProjectConfiguration {
 	
 	@Bean

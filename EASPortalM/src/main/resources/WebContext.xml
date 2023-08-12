@@ -19,11 +19,6 @@
 	<bean id="portalClient" class="com.hsuforum.easportalm.ws.client.PortalClient">
 		<property name="portalWSURI" value="@portalWSURI@" />
 	</bean>
-    <bean id="wsConfigBean"
-    	class="com.hsuforum.easportalm.web.config.WSConfigBean" 
-    	p:dataTableRows="25" p:mailFrom="abc@abc.com"
-    	scope="singleton" />
-	
 
     <bean class="com.hsuforum.easportalm.exception.ExceptionHandler"></bean>
     <bean id="serviceLocator" class="com.hsuforum.common.service.util.ServiceLocator"/>
