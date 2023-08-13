@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hsuforum.EASPortalM</groupId>
 	<artifactId>EASPortalM</artifactId>
-	<version>3.0.3</version>
+	<version>3.0.4</version>
 	<packaging>jar</packaging>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -15,7 +15,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<joinfaces.version>5.1.2</joinfaces.version>
-		<hsucommon.version>4.0.3</hsucommon.version>
+		<hsucommon.version>4.0.4</hsucommon.version>
 		<java.version>17</java.version>
 		<appRoot>/Application/EASPortalM</appRoot>
 		<systemUrl>https://localhost:7443</systemUrl>
