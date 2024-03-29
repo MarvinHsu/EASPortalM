@@ -318,7 +318,7 @@
 			<plugin>
 				<groupId>org.joinfaces</groupId>
 				<artifactId>joinfaces-maven-plugin</artifactId>
-				<version>${joinfaces.version}</version>
+				<version>5.2.0-m3</version>
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
