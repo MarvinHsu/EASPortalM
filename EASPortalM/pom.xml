@@ -18,6 +18,7 @@
 		<hsucommon.version>4.3.1</hsucommon.version>
 		<java.version>17</java.version>
 		<appRoot>/Application/EASPortalM</appRoot>
+		<spring.profiles.active>tomcat-mysql</spring.profiles.active>
 		<systemUrl>https://localhost:7443</systemUrl>
 		<ssoUrl>https://localhost:9443/cas</ssoUrl>
 		<portalWSURI>https://localhost:8443/EASPortal/rest</portalWSURI>
