@@ -63,7 +63,7 @@
 		<p:column id="columnName"
 			headerText="#{resources.com_hsuforum_easportalm_entity_Function_name}">
 
-			<p:selectManyCheckbox layout="grid" columns="4"
+			<p:selectManyCheckbox layout="lineDirection" columns="4"
 				value="#{functionVo.functionItemChecked}">
 				<f:selectItems value="#{functionVo.entity.functionItems}"
 					var="functionItem" itemLabel="#{functionItem.name}"
