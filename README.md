@@ -1,5 +1,5 @@
 # EASPortalM
-Enterprise Application Stack Portal Management (EASPortalM) is a Java 21 web application built with Spring Boot 4.1.0, JoinFaces 6.1.0 / PrimeFaces, Spring Security, Spring Data JPA, Quartz, and CAS-based authentication. The project is packaged as a JAR and built with Maven.
+Enterprise Application Stack Portal Management (EASPortalM) is a Java 21 web application built with Spring Boot 4.1.0, JoinFaces 6.1.0 / PrimeFaces, Spring Security, Spring Data JPA, Quartz, and CAS-based authentication. The project is packaged as a JAR and built with Maven. The product introduction link is [https://www.hsuforum.com/default.jsf?tabParam=easPortalTab](https://www.hsuforum.com/default.jsf?tabParam=easPortalTab "Go to The product introduction").
 
 ## Current project facts
 
